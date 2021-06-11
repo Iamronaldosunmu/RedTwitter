@@ -1,0 +1,49 @@
+/*TODO: Ask the user to choose their theme color for twitter*/
+/* Media Query for Phones (Small Devices) */
+@media screen and (max-width: 500px) {
+  body {
+    margin: 0;
+    padding: 0;
+  }
+  .loaderAnimationContainer {
+    position: absolute;
+    background: black;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 1;
+    transition: opacity 0.8s;
+  }
+
+  .loaderAnimationContainer.hidden {
+    opacity: 0;
+  }
+
+  .loaderAnimationSvg {
+    width: 70px;
+    height: 64px;
+    animation: flicker 1s linear 3;
+  }
+}
+
+/* TODO: Decide whether or not to do the design for larger devices or to ask them to move to smaller devices */
+@media screen and (min-width: 500px) {
+  body {
+    display: none;
+  }
+}
+
+/* Flicker animation that will be displayed when the page loads */
+@keyframes flicker {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+}
