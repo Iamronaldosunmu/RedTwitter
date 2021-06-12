@@ -8,3 +8,4 @@ function loaderAnimationStop() {
         loaderAnimationContainer.style.display = "none";
     }, 800);
 }
+

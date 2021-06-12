@@ -1,9 +1,18 @@
 /*TODO: Ask the user to choose their theme color for twitter*/
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@600&display=swap");
+
+:root {
+  --primary-color: #ff5349;
+}
 /* Media Query for Phones (Small Devices) */
 @media screen and (max-width: 500px) {
   body {
     margin: 0;
     padding: 0;
+    background: black;
+  }
+  .loaderAnimationContainerBigScreens {
+    display: none;
   }
   .loaderAnimationContainer {
     position: absolute;
@@ -13,6 +22,9 @@
     right: 0;
     left: 0;
     display: flex;
+
+    color: var(--primary-color);
+    font-size: 8px;
     align-items: center;
     justify-content: center;
     opacity: 1;
@@ -33,7 +45,76 @@
 /* TODO: Decide whether or not to do the design for larger devices or to ask them to move to smaller devices */
 @media screen and (min-width: 500px) {
   body {
+    background: black;
+  }
+
+  .loaderAnimationContainerBigScreens {
+    position: absolute;
+    background: black;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    display: flex;
+    color: var(--primary-color);
+    font-size: 8px;
+    align-items: center;
+    justify-content: center;
+    animation: show 0.8s ease-in 1;
+    transition: opacity 0.8s;
+  }
+  .loaderAnimationContainer {
     display: none;
+  }
+}
+@media screen and (min-width: 500px) and (max-width: 800px) {
+  body {
+    font-family: "Open Sans", sans-serif;
+    overflow: hidden;
+  }
+  .loaderAnimationContainerBigScreens {
+    flex-direction: column;
+  }
+  .loaderAnimationContainerBigScreens .bigScreenImage {
+    width: 400px;
+  }
+  .loaderAnimationContainerBigScreens .textContainer h1 {
+    font-size: 45px;
+    text-align: center;
+    width: 100%;
+  }
+  .loaderAnimationContainerBigScreens .textContainer {
+    margin: 30px 40px;
+  }
+}
+
+@media screen and (min-width: 800px) {
+  body {
+    font-family: "Open Sans", sans-serif;
+    overflow: hidden;
+  }
+  .loaderAnimationContainerBigScreens {
+    flex-direction: row;
+  }
+  .loaderAnimationContainerBigScreens .bigScreenImage {
+    width: 50%;
+    margin-left: 30px;
+    max-width: 600px;
+  }
+  .loaderAnimationContainerBigScreens .textContainer h1 {
+    font-size: 40px;
+    text-align: left;
+    margin-right: 30px;
+    max-width: 650px;
+  }
+  .loaderAnimationContainerBigScreens .textContainer h1::before {
+    content: "Hey there,";
+    display: block;
+    font-size: 80px;
+    margin-bottom: 20px;
+  }
+  .loaderAnimationContainerBigScreens .textContainer {
+    margin-bottom: 200px;
   }
 }
 
@@ -45,5 +126,14 @@
   }
   50% {
     transform: scale(1.1);
+  }
+}
+
+@keyframes show {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
   }
 }
