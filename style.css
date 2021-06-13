@@ -5,7 +5,7 @@
   --primary-color: #ff5349;
 }
 /* Media Query for Phones (Small Devices) */
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 499px) {
   body {
     margin: 0;
     padding: 0;
@@ -46,6 +46,23 @@
 
   /* Section for the navigation section of the app */
 
+  /* Tweet Button */
+  .tweetButton {
+    width: 65px;
+    height: 65px;
+    position: fixed;
+    bottom: 65px;
+    right: 4vw;
+    border-radius: 60%;
+    background: var(--primary-color);
+    border: 0;
+    box-shadow: 0px 0px 7px 2px rgba(255, 255, 255, 0.2);
+  }
+  .tweetButtonImage {
+    width: 23px;
+    height: 23px;
+    fill: white;
+  }
   /* Top Navigation Bar */
   .topNavBar {
     position: fixed;
@@ -54,7 +71,7 @@
     align-items: center;
     justify-content: space-between;
     top: 0;
-    height: 70px;
+    height: 50px;
     width: 100%;
     background: black;
   }
@@ -68,11 +85,13 @@
     padding: 0;
     background: transparent;
     transform: translate(5px, -5px);
+    animation: show 0.5s ease-in 1;
   }
   .navTwitterImage {
     width: 40px;
     height: 40px;
     transform: translateX(5px);
+    animation: show 0.5s ease-in 1;
   }
   .navTwitterStarImage {
     width: 35px;
@@ -81,6 +100,7 @@
     stroke-width: 1px;
     fill: var(--primary-color);
     transform: translateX(-10px);
+    animation: show 0.5s ease-in 1;
   }
   .toggle .slide {
     background: var(--primary-color);
@@ -102,19 +122,23 @@
     bottom: 0;
     width: 100%;
     background: black;
-    height: 60px;
+    height: 45px;
     display: none;
     align-items: center;
     justify-content: space-around;
+    border-top: 0.1px solid lightgrey;
   }
 
   .navBarIcon {
-    width: 32px;
-    height: 32px;
+    width: 24px;
+    height: 24px;
     fill: lightgrey;
+    animation: show 0.5s ease-in 1;
   }
   .navBarIcon.selected {
     fill: var(--primary-color);
+    stroke: var(--primary-color);
+    stroke-width: 0.5px;
   }
 }
 
@@ -125,7 +149,8 @@
   }
   /* To remove all other items from the message screen */
   .topNavBar,
-  .bottomNavBar {
+  .bottomNavBar,
+  .tweetButton {
     display: none;
   }
 
