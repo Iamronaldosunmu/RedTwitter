@@ -10,7 +10,10 @@
     margin: 0;
     padding: 0;
     background: black;
+    min-height: 100vh;
   }
+
+  /* Section for the loader animation */
   .loaderAnimationContainerBigScreens {
     display: none;
   }
@@ -40,12 +43,90 @@
     height: 64px;
     animation: flicker 1s linear 3;
   }
+
+  /* Section for the navigation section of the app */
+
+  /* Top Navigation Bar */
+  .topNavBar {
+    position: fixed;
+    display: none;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    top: 0;
+    height: 70px;
+    width: 100%;
+    background: black;
+  }
+  .toggle {
+    width: 40px;
+    height: 40px;
+    text-align: center;
+    border: 0;
+    top: 15px;
+    left: 15px;
+    padding: 0;
+    background: transparent;
+    transform: translate(5px, -5px);
+  }
+  .navTwitterImage {
+    width: 40px;
+    height: 40px;
+    transform: translateX(5px);
+  }
+  .navTwitterStarImage {
+    width: 35px;
+    height: 35px;
+    stroke: var(--primary-color);
+    stroke-width: 1px;
+    fill: var(--primary-color);
+    transform: translateX(-10px);
+  }
+  .toggle .slide {
+    background: var(--primary-color);
+    width: 25px;
+    height: 4.5px;
+    z-index: 2;
+    border: 0;
+    display: block;
+    margin: 4.5px auto;
+    border-radius: 2.5px;
+    max-width: 25px;
+    transition: all 0.4s;
+  }
+
+  /* Bottom Navigation Bar */
+
+  .bottomNavBar {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background: black;
+    height: 60px;
+    display: none;
+    align-items: center;
+    justify-content: space-around;
+  }
+
+  .navBarIcon {
+    width: 32px;
+    height: 32px;
+    fill: lightgrey;
+  }
+  .navBarIcon.selected {
+    fill: var(--primary-color);
+  }
 }
 
 /* TODO: Decide whether or not to do the design for larger devices or to ask them to move to smaller devices */
 @media screen and (min-width: 500px) {
   body {
     background: black;
+  }
+  /* To remove all other items from the message screen */
+  .topNavBar,
+  .bottomNavBar {
+    display: none;
   }
 
   .loaderAnimationContainerBigScreens {
@@ -67,6 +148,8 @@
     display: none;
   }
 }
+
+/* Media Query for the bigger screens (To display change to smaller device message) */
 @media screen and (min-width: 500px) and (max-width: 800px) {
   body {
     font-family: "Open Sans", sans-serif;
@@ -128,7 +211,7 @@
     transform: scale(1.1);
   }
 }
-
+/* Animation to show the message for big screens smoothly */
 @keyframes show {
   0% {
     opacity: 0;
