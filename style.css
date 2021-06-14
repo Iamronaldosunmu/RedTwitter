@@ -1,8 +1,11 @@
 /*TODO: Ask the user to choose their theme color for twitter*/
 @import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@600&display=swap");
-
+* {
+  box-sizing: border-box;
+}
 :root {
   --primary-color: #ff5349;
+  --dark-grey: rgb(110 118 125);
 }
 /* Media Query for Phones (Small Devices) */
 @media screen and (max-width: 499px) {
@@ -142,6 +145,85 @@
     fill: var(--primary-color);
     stroke: var(--primary-color);
     stroke-width: 0.5px;
+  }
+  .homeBtn {
+    position: relative;
+  }
+
+  /* TODO: Add that blue circle that appears on the home icon when there are tweets */
+  .homeBtn.newTweets::before {
+    content: "";
+    display: block;
+    width: 5px;
+    height: 5px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    background: var(--primary-color);
+  }
+
+  /* Account Information Section */
+  .accountInfo {
+    position: fixed;
+
+    left: -73vw;
+    width: 73vw;
+    height: 100vh;
+    background: black;
+    opacity: 0;
+    transform: translateX(0);
+    font-family: Arial, sans-serif;
+    transition: transform 0.4s, opacity 0.4s;
+  }
+
+  .accountInfo.showing {
+    transform: translateX(100%);
+    opacity: 1;
+  }
+  .userImage {
+    width: 63px;
+    height: 63px;
+    object-fit: cover;
+    background: white;
+    border-radius: 50%;
+    margin-bottom: 14px;
+  }
+  .accountInfo h2 {
+    margin: 0;
+  }
+  .name {
+    font-size: 18px;
+    font-weight: 700;
+    color: white;
+  }
+  .username {
+    font-size: 15px;
+    font-weight: 400;
+    color: var(--dark-grey);
+  }
+  .userNumbers {
+    color: white;
+    margin-top: 20px;
+    padding: 0 20px 20px;
+    box-shadow: -0.6px 0.6px rgba(255, 255, 255, 0.1);
+    width: 100%;
+  }
+  .userNumbers span {
+    display: inline-block;
+  }
+  .number {
+    font-weight: 700;
+  }
+  .userNumberText {
+    color: var(--dark-grey);
+    margin-left: 4px;
+    font-size: 14px;
+  }
+  .following {
+    margin-right: 15px;
+  }
+  .userProfile {
+    padding: 20px 20px 0;
   }
 }
 
