@@ -128,7 +128,7 @@
     bottom: 0;
     width: 100%;
     background: black;
-    height: 45px;
+    height: 55px;
     display: none;
     align-items: center;
     justify-content: space-around;
@@ -136,10 +136,11 @@
   }
 
   .navBarIcon {
-    width: 24px;
-    height: 24px;
+    width: 28px;
+    height: 28px;
     fill: lightgrey;
     animation: show 0.5s ease-in 1;
+    transition: fill 0.3s ease-in;
   }
   .navBarIcon.selected {
     fill: var(--primary-color);
@@ -149,6 +150,21 @@
   .homeBtn {
     position: relative;
   }
+  .navBarIconContainer {
+    background-color: transparent;
+    padding: 7px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s ease-in;
+  }
+  .navBarIconContainer:hover {
+    background-color: rgba(255, 83, 73, 0.3);
+  }
+  .navBarIconContainer:hover .navBarIcon {
+    fill: var(--primary-color);
+  }
 
   /* TODO: Add that blue circle that appears on the home icon when there are tweets */
   .homeBtn.newTweets::before {
@@ -157,8 +173,8 @@
     width: 6.5px;
     height: 6.5px;
     position: absolute;
-    top: -3.5px;
-    right: -2px;
+    top: 4.5px;
+    right: 6.5px;
     background: var(--primary-color);
     border-radius: 50%;
     border: 0;
