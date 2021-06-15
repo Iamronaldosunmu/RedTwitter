@@ -100,8 +100,8 @@
     animation: show 0.5s ease-in 1;
   }
   .navTwitterStarImage {
-    width: 35px;
-    height: 35px;
+    width: 30px;
+    height: 30px;
     stroke: var(--primary-color);
     stroke-width: 1px;
     fill: var(--primary-color);
@@ -224,6 +224,35 @@
   }
   .userProfile {
     padding: 20px 20px 0;
+  }
+  .listItem {
+    padding: 20px;
+    color: white;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+  }
+  .listItemSvg {
+    fill: darkgrey;
+    width: 25px;
+    height: 25px;
+    margin-right: 15px;
+  }
+  /* Blurring Section to close the Account Info section */
+  .closeAccountInfo {
+    position: fixed;
+    width: 27vw;
+    height: 100vh;
+    right: -27vw;
+    opacity: 0;
+    transform: translateX(0);
+    transition: opacity 0.4s;
+  }
+
+  .closeAccountInfo.visible {
+    background: rgba(0, 0, 0, 0.75);
+    transform: translateX(-100%);
+    opacity: 1;
   }
 }
 

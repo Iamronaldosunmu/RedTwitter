@@ -4,10 +4,9 @@ const topNavBar = document.querySelector('.topNavBar');
 const bottomNavBar = document.querySelector('.bottomNavBar');
 const tweetButton = document.querySelector('.tweetButton');
 const accountInfo = document.querySelector('.accountInfo');
+const closeAccountInfoBtn = document.querySelector('.closeAccountInfo');
 const toggleBtn = document.querySelector('#toggle')
 const body = document.querySelector('body');
-
-console.log(body);
 setTimeout(loaderAnimationStop, 3500);
 
 
@@ -29,11 +28,15 @@ window.addEventListener('click', closeAccountInfo);
 //Event Listener Functions
 function showAccountInfo(e) {
     accountInfo.classList.add('showing');
+    closeAccountInfoBtn.classList.add('visible');
     
     
 }
 function closeAccountInfo(e){
-     if ([...accountInfo.classList].includes('showing') && (e.target != accountInfo && (e.target.parentNode != toggleBtn && e.target != toggleBtn))) {
+    
+     if ([...accountInfo.classList].includes('showing') && e.target == closeAccountInfoBtn) {
          accountInfo.classList.remove('showing');
+         closeAccountInfoBtn.classList.remove('visible');
+         
      }
 }
