@@ -241,6 +241,7 @@
     font-size: 18px;
     font-weight: 700;
     color: white;
+    margin-bottom: 4px;
   }
   .username {
     font-size: 15px;
@@ -335,6 +336,16 @@
 @media screen and (max-height: 600px) {
   .listItem {
     padding: 15px 15px 15px 20px;
+  }
+}
+@media screen and (max-width: 330px) {
+  .accountInfo {
+    left: -80vw;
+    width: 80vw;
+  }
+  .closeAccountInfo {
+    width: 20vw;
+    right: -20vw;
   }
 }
 
