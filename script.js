@@ -11,9 +11,11 @@ const homeBtn = document.querySelector('.navBarIconContainer.homeBtn');
 const searchBtn = document.querySelector('.navBarIconContainer.searchBtn');
 const notificationBtn = document.querySelector('.navBarIconContainer.notificationBtn');
 const messageBtn = document.querySelector('.navBarIconContainer.messageBtn');
+const lightingBtn = document.querySelector('.lightingButton');
+
 setTimeout(loaderAnimationStop, 3500);
 
-console.log(homeBtn, searchBtn, notificationBtn, messageBtn);
+console.log(lightingBtn);
 
 let bottomNavBarIcons = [homeBtn, searchBtn, notificationBtn, messageBtn];
 
@@ -32,6 +34,7 @@ function loaderAnimationStop() {
 toggleBtn.addEventListener('click', showAccountInfo);
 window.addEventListener('click', closeAccountInfo);
 bottomNavBar.addEventListener('click', toggleSelectedClass);
+lightingBtn.addEventListener('click', changeLighting);
 //Event Listener Functions
 function showAccountInfo(e) {
     accountInfo.classList.add('showing');
@@ -63,7 +66,7 @@ function toggleSelectedClass(e){
         
         console.log('toggled', icon.classList);
     }
-};
+}
 /*TODO: Rather than deselecting all of the other elements that were clicked, 
 it will be better to have a current selected element and change that selected element 
 every time one of the icons in the bottom nav bar is clicked, this way when it is time
@@ -77,4 +80,9 @@ function unselectOthers(icon) {
             }
         }
     })
+}
+
+function changeLighting(e) {
+    accountInfo.classList.remove('showing');
+    closeAccountInfoBtn.classList.remove('visible');
 }

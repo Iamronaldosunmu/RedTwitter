@@ -226,6 +226,14 @@
     border-radius: 50%;
     margin-bottom: 14px;
   }
+  .verifiedBadge {
+    display: inline-block;
+    height: 24px;
+    width: 24px;
+    fill: white;
+    position: relative;
+    top: 5px;
+  }
   .accountInfo h2 {
     margin: 0;
   }
@@ -276,6 +284,36 @@
     height: 25px;
     margin-right: 15px;
   }
+  /* Section to toggle the lighting theme */
+  .relativeContainer {
+    position: relative;
+    width: 100%;
+    height: 100%;
+  }
+  .lightingSection {
+    background: transparent;
+    height: 50px;
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    padding: 9px 0 9px 20px;
+    box-shadow: -0.6px -0.6px rgba(255, 255, 255, 0.1);
+    z-index: 1;
+  }
+  .lightingIcon {
+    width: 25px;
+    height: 25px;
+    fill: var(--dark-grey);
+  }
+  .lightingButton {
+    background: transparent;
+    border: 0;
+    padding: 0;
+    margin: 0;
+  }
+  .lightingButton:focus {
+    outline: 0;
+  }
   /* Blurring Section to close the Account Info section */
   .closeAccountInfo {
     position: fixed;
@@ -291,6 +329,12 @@
     background: rgba(0, 0, 0, 0.75);
     transform: translateX(-100%);
     opacity: 1;
+  }
+}
+/* Defining a media query to reduce the space between list items in the Account Info Section */
+@media screen and (max-height: 600px) {
+  .listItem {
+    padding: 15px 15px 15px 20px;
   }
 }
 
