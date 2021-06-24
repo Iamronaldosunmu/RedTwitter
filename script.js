@@ -1,3 +1,7 @@
+// TODO:After Jamb please make sure to style the Light mode(or theme) properly, it looks terrible right now.
+
+
+
 //Selecting Items from the DOM
 const loaderAnimationContainer = document.querySelector('#loaderAnimationContainer');
 const topNavBar = document.querySelector('.topNavBar');
@@ -17,9 +21,12 @@ const closeLightsOutPopUp = document.querySelector('.closeLightsOutPopUp');
 const lightingOptionButtonOn = document.querySelector('.on');
 const lightingOptionButtonOff = document.querySelector('.off');
 const lightsOutContainer = document.querySelector('.lightsOutPopUpContainer');
+let selectedTheme = lightingOptionButtonOn;
 setTimeout(loaderAnimationStop, 3500);
 
-console.log(lightingOptionButtonOn, lightingOptionButtonOff);
+const arrayOfThingsToChangeInTheme = [body, topNavBar, bottomNavBar, accountInfo, lightsOutContainer, lightsOutPopUp];
+
+console.log(arrayOfThingsToChangeInTheme);
 
 let bottomNavBarIcons = [homeBtn, searchBtn, notificationBtn, messageBtn];
 
@@ -42,6 +49,7 @@ window.addEventListener('click', closeSideBar);
 bottomNavBar.addEventListener('click', toggleSelectedClass);
 lightingBtn.addEventListener('click', changeLighting);
 closeLightsOutPopUp.addEventListener('click', closeLightingSection);
+lightsOutContainer.addEventListener('click', selectaButton )
 //Event Listener Functions
 function showAccountInfo(e) {
     accountInfo.classList.add('showing');
@@ -79,6 +87,8 @@ every time one of the icons in the bottom nav bar is clicked, this way when it i
 to start creating pages and the likes, the process will be seamless. */
 /*FIXME: When an Icon is clicked, It can still be deselected even though no other Item is selected 
 which means that we will have a situation where there are no clicked Icons
+We already implemented this feature of selected items in the light pop up buttons, just 
+use the same logic.
  */
 function unselectOthers(icon) {
     bottomNavBarIcons.forEach((currentIcon) => {
@@ -95,7 +105,31 @@ function closeLightingSection(e) {
 closeLightsPopUp();
     }
 }
+function selectaButton(e) {
+    let clickedEl = '';
+    if ([...e.target.classList].includes('lightingOptionButton')  || [...e.target.parentNode.classList].includes('lightingOptionButton')){
+        if ([...e.target.parentNode.classList].includes('lightingOptionButton')){
+            clickedEl = e.target.parentNode;
+        }
+        else if ([...e.target.classList].includes('lightingOptionButton')) {
+            clickedEl = e.target;
+        }
+    }
+    if (clickedEl) {
+        if (clickedEl == selectedTheme) {
+            return False;
+        }
+        else {
+            selectedTheme.classList.remove('selected');
+            clickedEl.classList.add('selected');
+            selectedTheme = clickedEl;
+            arrayOfThingsToChangeInTheme.forEach(item => {
+                item.classList.add('lightTheme');
+            })
 
+        }
+    }
+}
 function changeLighting(e) {
     closeAccountInfo();
     setTimeout(openLightsPopUp, 200);

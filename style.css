@@ -8,14 +8,20 @@
 :root {
   --primary-color: #ff5349;
   --dark-grey: rgb(110 118 125);
+  --theme-change-time: 0.5s;
 }
 /* Media Query for Phones (Small Devices) */
 @media screen and (max-width: 499px) {
   body {
     margin: 0;
     padding: 0;
-    background: black;
+    background-color: black;
     min-height: 100vh;
+    transition: background-color var(--theme-change-time),
+      color var(--theme-change-time);
+  }
+  body.lightTheme {
+    background-color: white;
   }
 
   /* Section for the loader animation */
@@ -84,8 +90,14 @@
     top: 0;
     height: 50px;
     width: 100%;
-    background: black;
+    background-color: black;
     box-shadow: 0px 0.6px rgba(255, 255, 255, 0.1);
+    transition: background-color var(--theme-change-time),
+      color var(--theme-change-time);
+  }
+  .topNavBar.lightTheme {
+    background-color: white;
+    box-shadow: 0px 0.6px rgba(0, 0, 0, 0.1);
   }
   .toggle {
     width: 40px;
@@ -139,6 +151,12 @@
     align-items: center;
     justify-content: space-around;
     box-shadow: 0px -0.6px rgba(255, 255, 255, 0.1);
+    transition: background-color var(--theme-change-time),
+      color var(--theme-change-time);
+  }
+  .bottomNavBar.lightTheme {
+    background-color: white;
+    box-shadow: 0px -0.6px rgba(0, 0, 0, 0.1);
   }
 
   .navBarIconContainer.selected .navBarIcon.normal {
@@ -156,7 +174,7 @@
   .navBarIcon {
     width: 28px;
     height: 28px;
-    fill: lightgrey;
+    fill: darkgrey;
     animation: show 0.25s ease-in 1;
     transition: fill 0.3s ease-in;
   }
@@ -205,15 +223,18 @@
   /* Account Information Section */
   .accountInfo {
     position: fixed;
-
     left: -73vw;
     width: 73vw;
     height: 100vh;
-    background: black;
+    background-color: black;
     opacity: 0;
     transform: translateX(0);
     font-family: Arial, sans-serif;
-    transition: transform 0.4s, opacity 0.4s;
+    transition: transform 0.4s, opacity 0.4s,
+      background-color var(--theme-change-time), color var(--theme-change-time);
+  }
+  .accountInfo.lightTheme {
+    background-color: white;
   }
 
   .accountInfo.showing {
@@ -244,6 +265,10 @@
     font-weight: 700;
     color: white;
     margin-bottom: 4px;
+    transition: color var(--theme-change-time);
+  }
+  .accountInfo.lightTheme .relativeContainer .userProfile .name {
+    color: black;
   }
   .username {
     font-size: 15px;
@@ -256,6 +281,11 @@
     padding: 0 20px 20px;
     box-shadow: -0.6px 0.6px rgba(255, 255, 255, 0.1);
     width: 100%;
+    transition: color var(--theme-change-time);
+  }
+  .accountInfo.lightTheme .relativeContainer .userNumbers {
+    color: black;
+    box-shadow: -0.6px 0.6px rgba(0, 0, 0, 0.4);
   }
   .userNumbers span {
     display: inline-block;
@@ -280,6 +310,10 @@
     font-size: 18px;
     display: flex;
     align-items: center;
+    transition: color var(--theme-change-time);
+  }
+  .accountInfo.lightTheme .relativeContainer .listItem {
+    color: black;
   }
   .listItemSvg {
     fill: darkgrey;
@@ -302,6 +336,9 @@
     padding: 9px 0 9px 20px;
     box-shadow: -0.6px -0.3px rgba(255, 255, 255, 0.1);
     z-index: 1;
+  }
+  .accountInfo.lightTheme .relativeContainer .lightingSection {
+    box-shadow: -0.6px -0.2px rgba(0, 0, 0, 0.4);
   }
   .lightingIcon {
     width: 25px;
@@ -344,23 +381,30 @@
     background-color: darkgrey;
     border-top-left-radius: 28px;
     border-top-right-radius: 28px;
-    transition: transform 0.3s;
+    transition: transform 0.3s, background-color var(--theme-change-time),
+      color var(--theme-change-time);
     overflow: hidden;
     border: 0;
     background-color: rgba(8, 8, 8);
+
+    z-index: 2;
   }
   .closeLightsOutPopUp {
     opacity: 0;
     display: none;
     position: absolute;
-    top: -35vh;
-    height: 35vh;
+    top: -40vh;
+    height: 40vh;
     width: 100vw;
     background-color: rgba(0, 0, 0, 0.75);
     transition: opacity 0.3s;
+    z-index: 1;
   }
   .lightsOutPopUp.visible {
     transform: translateY(-100%);
+  }
+  .lightsOutPopUp.lightTheme {
+    background-color: white;
   }
   .closeLightsOutPopUp.visible {
     opacity: 1;
@@ -370,8 +414,12 @@
     position: relative;
     width: 100%;
     height: calc(100% + 28px);
-    background: rgba(8, 8, 8);
+    background-color: rgba(8, 8, 8);
     transform: translateY(-20px);
+    transition: background-color var(--theme-change-time);
+  }
+  .lightsOutPopUpContainer.lightTheme {
+    background-color: white;
   }
   .lightsOutPopUpContainer::after {
     position: absolute;
@@ -391,6 +439,10 @@
     padding-top: 25px;
     color: white;
     font-family: "Lato", sans-serif;
+    transition: color var(--theme-change-time);
+  }
+  .lightsOutPopUpContainer.lightTheme h2 {
+    color: black;
   }
   .lightingOption {
     display: flex;
@@ -404,6 +456,12 @@
     font-family: "Lato", sans-serif;
     color: white;
     padding: 25px 30px;
+    transition: color var(--theme-change-time);
+  }
+  .lightsOutPopUpContainer.lightTheme .lightingOption {
+    border-top: 0.6px solid rgba(0, 0, 0, 0.3);
+    border-bottom: 0.6px solid rgba(0, 0, 0, 0.3);
+    color: black;
   }
   button.lightingOptionButton {
     background: transparent;
@@ -417,7 +475,15 @@
     border: 2px solid var(--primary-color);
     overflow: hidden;
   }
+  .animationCircle {
+    opacity: 0;
+    transform: scale(2);
+
+    transition: opacity 0.5s, transform 0.5s;
+  }
   button.lightingOptionButton.selected .animationCircle {
+    opacity: 1;
+    transform: scale(1);
     top: 0;
     left: 0;
     width: 15px;
