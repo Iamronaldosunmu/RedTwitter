@@ -22,6 +22,7 @@ const lightingOptionButtonOn = document.querySelector('.on');
 const lightingOptionButtonOff = document.querySelector('.off');
 const lightsOutContainer = document.querySelector('.lightsOutPopUpContainer');
 let selectedTheme = lightingOptionButtonOn;
+let selectedBottomNavButton = homeBtn;
 setTimeout(loaderAnimationStop, 3500);
 
 const arrayOfThingsToChangeInTheme = [body, topNavBar, bottomNavBar, accountInfo, lightsOutContainer, lightsOutPopUp];
@@ -65,31 +66,34 @@ function closeSideBar(e){
      }
 }
 function toggleSelectedClass(e){
-    if ([...e.target.classList].includes('navBarIconContainer')){
-        let icon = e.target;
-        icon.classList.toggle('selected');
-        icon.classList.toggle('normal');
-        console.log('toggled');
-        unselectOthers(icon);
+    let clickedEl = '';
+    
+    if ([...e.target.classList].includes('navBarIconContainer') || [...e.target.parentNode.classList].includes('navBarIconContainer')) {
+        if ([...e.target.classList].includes('navBarIconContainer')){
+        clickedEl = e.target;
     }
     else if ([...e.target.parentNode.classList].includes('navBarIconContainer')){
-        let icon = e.target.parentNode;
-        icon.classList.toggle('selected');
-        icon.classList.toggle('normal');
-        unselectOthers(icon);
-        
-        console.log('toggled', icon.classList);
+        clickedEl = e.target.parentNode;
+    }}
+    if (clickedEl) {
+        if (clickedEl == selectedBottomNavButton) {
+            return false;
+        }
+        else{
+
+            clickedEl.classList.toggle('selected');
+            clickedEl.classList.toggle('normal');
+            selectedBottomNavButton = clickedEl;
+           
+            unselectOthers(clickedEl);
+        }
     }
 }
 /*TODO: Rather than deselecting all of the other elements that were clicked, 
 it will be better to have a current selected element and change that selected element 
 every time one of the icons in the bottom nav bar is clicked, this way when it is time
 to start creating pages and the likes, the process will be seamless. */
-/*FIXME: When an Icon is clicked, It can still be deselected even though no other Item is selected 
-which means that we will have a situation where there are no clicked Icons
-We already implemented this feature of selected items in the light pop up buttons, just 
-use the same logic.
- */
+
 function unselectOthers(icon) {
     bottomNavBarIcons.forEach((currentIcon) => {
         if (icon != currentIcon){
@@ -117,14 +121,14 @@ function selectaButton(e) {
     }
     if (clickedEl) {
         if (clickedEl == selectedTheme) {
-            return False;
+            return false;
         }
         else {
             selectedTheme.classList.remove('selected');
             clickedEl.classList.add('selected');
             selectedTheme = clickedEl;
             arrayOfThingsToChangeInTheme.forEach(item => {
-                item.classList.add('lightTheme');
+                item.classList.toggle('lightTheme');
             })
 
         }
