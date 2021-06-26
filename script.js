@@ -80,30 +80,18 @@ function toggleSelectedClass(e){
             return false;
         }
         else{
+            selectedBottomNavButton.classList.toggle('selected');
+            selectedBottomNavButton.classList.toggle('normal');
 
             clickedEl.classList.toggle('selected');
             clickedEl.classList.toggle('normal');
             selectedBottomNavButton = clickedEl;
            
-            unselectOthers(clickedEl);
         }
     }
 }
-/*TODO: Rather than deselecting all of the other elements that were clicked, 
-it will be better to have a current selected element and change that selected element 
-every time one of the icons in the bottom nav bar is clicked, this way when it is time
-to start creating pages and the likes, the process will be seamless. */
 
-function unselectOthers(icon) {
-    bottomNavBarIcons.forEach((currentIcon) => {
-        if (icon != currentIcon){
-            if ([...currentIcon.classList].includes('selected')){
-                currentIcon.classList.toggle('selected');
-                currentIcon.classList.toggle('normal');
-            }
-        }
-    })
-}
+
 function closeLightingSection(e) {
     if ([...lightsOutPopUp.classList].includes('visible') && e.target == closeLightsOutPopUp){
 closeLightsPopUp();
@@ -151,3 +139,4 @@ function closeLightsPopUp() {
     lightsOutPopUp.classList.remove('visible');
     closeLightsOutPopUp.classList.remove('visible');
 }
+
