@@ -71,6 +71,7 @@
     display: none;
     animation: show 0.5s ease-in 1;
     transition: background-color 0.2s;
+    z-index: 1;
   }
   .tweetButton:hover {
     background-color: #cc423a;
@@ -94,6 +95,7 @@
     box-shadow: 0px 0.6px rgba(255, 255, 255, 0.1);
     transition: background-color var(--theme-change-time),
       color var(--theme-change-time);
+      z-index: 1;
   }
   .topNavBar.lightTheme {
     background-color: white;
@@ -153,6 +155,7 @@
     box-shadow: 0px -0.6px rgba(255, 255, 255, 0.1);
     transition: background-color var(--theme-change-time),
       color var(--theme-change-time);
+    z-index: 1;
   }
   .bottomNavBar.lightTheme {
     background-color: white;
@@ -232,6 +235,7 @@
     font-family: Arial, sans-serif;
     transition: transform 0.4s, opacity 0.4s,
       background-color var(--theme-change-time), color var(--theme-change-time);
+    z-index: 3;
   }
   .accountInfo.lightTheme {
     background-color: white;
@@ -357,12 +361,13 @@
   /* Blurring Section to close the Account Info section */
   .closeAccountInfo {
     position: fixed;
-    width: 27vw;
+    width: 100vw;
     height: 100vh;
-    right: -27vw;
+    right: -100vw;
     opacity: 0;
     transform: translateX(0);
     transition: opacity 0.4s;
+    z-index: 3;
   }
 
   .closeAccountInfo.visible {
@@ -392,7 +397,7 @@
   .closeLightsOutPopUp {
     opacity: 0;
     display: none;
-    position: absolute;
+    position: fixed;
     top: -40vh;
     height: 40vh;
     width: 100vw;
@@ -492,6 +497,199 @@
     background: var(--primary-color);
     /* transform: scale(2); */
   }
+
+  /* Visible section of the website for the tweets */
+  .tweetsContainer {
+    background-color: transparent;
+    width: 100vw;
+    min-height: 100vh;
+    display: none;
+    padding: 50px 0 55px;
+  }
+  /* FIXME: Change the color of the elipses in the truncated text to grey */
+  .tweet {
+    display: flex;
+    flex-direction: row;
+    justify-content: stretch;
+    flex-wrap: nowrap;
+    width: 100vw;
+    overflow: hidden;
+    background-color: transparent;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+    padding-bottom: 10px;
+    animation: show 0.35s ease-in 1;
+    padding-right: 10px;
+    transition: border-bottom var(--theme-change-time);
+    /* height: 300px; */
+  }
+  .tweetsContainer.lightTheme .tweet {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+  }
+  .tweetUserImage {
+    display: flex;
+    align-items: start;
+    justify-content: center;
+
+    height: 100%;
+    background-color: transparent;
+    padding-top: 10px;
+    padding-left: 10px;
+    padding-right: 5px;
+  }
+  .tweetUserImagePicture {
+    width: 65px;
+    height: 65px;
+    border-radius: 50%;
+    border: 0;
+  }
+  .tweetUserImagePicture img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+  }
+  .tweetContent {
+    width: 100%;
+    height: 100%;
+    background-color: transparent;
+    font-family: sans-serif;
+    max-width: calc(100% - 65px);
+  }
+  .tweetContent header .displayName {
+    color: white;
+    font-weight: 700;
+    transition: color var(--theme-change-time);
+  }
+  .tweetsContainer.lightTheme .displayName {
+    color: black;
+  }
+  .tweetContent header .userName {
+    color: var(--dark-grey);
+  }
+  .tweetContent header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding-top: 10px;
+    margin-bottom: 3px;
+  }
+  .headerText {
+    width: 25ch;
+    max-width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin: 0;
+    font-size: 18px;
+    color: var(--dark-grey);
+  }
+  .tweetOptions {
+    background: transparent;
+    width: 10px;
+    height: 10px;
+  }
+  .tweetContentText {
+    color: white;
+    font-size: 17px;
+    padding-right: 10px;
+    line-height: 1.2;
+    transition: color var(--theme-change-time);
+  }
+  .tweetsContainer.lightTheme .tweetContentText {
+    color: black;
+  }
+  button.tweetOptions {
+    border: 0;
+    /* display: flex; */
+    background-color: transparent;
+    width: 20px;
+    height: 20px;
+  }
+  button.tweetOptions .smallCircle {
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: var(--dark-grey);
+    margin-bottom: 2px;
+  }
+  .tweetInteractionSection {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+    right: 8px;
+    margin-top: 15px;
+  }
+  .tweetInteractionSectionIcon {
+    fill: var(--dark-grey);
+    width: 20px;
+    height: 20px;
+    margin-right: 3px;
+  }
+  .tweetInteractionSection .section {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+  }
+  button.tweetInteractionSectionButton {
+    background: transparent;
+    border: 0;
+  }
+  .tweetInteractionSection .section div {
+    color: var(--dark-grey);
+    font-size: 13.5px;
+    position: relative;
+    bottom: 2px;
+  }
+  .tweetMediaImage {
+    margin-top: 15px;
+    width: calc(100% - 15px);
+    border-radius: 25px;
+    overflow: hidden;
+    /* display: none; */
+  }
+  .tweetMediaImage img {
+    width: 100%;
+    transform: scale(1.1);
+  }
+  .linkSection {
+    display: block;
+    margin-top: 15px;
+    width: calc(100% - 15px);
+    border-top-right-radius: 25px;
+    border-top-left-radius: 15px;
+    overflow: hidden;
+    text-decoration: none;
+  }
+  .linkImagePicture {
+    width: 100%;
+  }
+  .url {
+    color: var(--dark-grey);
+    margin-bottom: 5px;
+  }
+  .linkPreview {
+    color: white;
+  }
+  .linkText {
+    width: 100%;
+    padding: 10px;
+    border-left: 0.6px solid rgb(12 12 13);
+    border-right: 0.6px solid rgb(12 12 13);
+    border-bottom: 0.6px solid rgb(12 12 13);
+    border-top: 0;
+    border-bottom-right-radius: 15px;
+    border-bottom-left-radius: 15px;
+    position: relative;
+    bottom: 4px;
+  }
+}
+@media screen and (max-width: 321px) {
+  .tweetContent {
+    padding-right: 10px;
+  }
 }
 /* Defining a media query to reduce the space between list items in the Account Info Section */
 @media screen and (max-height: 600px) {
@@ -519,7 +717,10 @@
   .topNavBar,
   .bottomNavBar,
   .tweetButton,
-  .accountInfo {
+  .accountInfo,
+  .tweetsContainer,
+  .tweetUserImagePicture,
+  .tweetMediaImage {
     display: none;
   }
 

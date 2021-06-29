@@ -21,11 +21,13 @@ const closeLightsOutPopUp = document.querySelector('.closeLightsOutPopUp');
 const lightingOptionButtonOn = document.querySelector('.on');
 const lightingOptionButtonOff = document.querySelector('.off');
 const lightsOutContainer = document.querySelector('.lightsOutPopUpContainer');
+const  tweetsContainer = document.querySelector('.tweetsContainer');
+
 let selectedTheme = lightingOptionButtonOn;
 let selectedBottomNavButton = homeBtn;
 setTimeout(loaderAnimationStop, 3500);
 
-const arrayOfThingsToChangeInTheme = [body, topNavBar, bottomNavBar, accountInfo, lightsOutContainer, lightsOutPopUp];
+const arrayOfThingsToChangeInTheme = [body, topNavBar, bottomNavBar, accountInfo, lightsOutContainer, lightsOutPopUp, tweetsContainer];
 
 console.log(arrayOfThingsToChangeInTheme);
 
@@ -41,6 +43,7 @@ function loaderAnimationStop() {
         tweetButton.style.display = 'block';
         lightsOutPopUp.style.display = 'block';
         closeLightsOutPopUp.style.display = 'block';
+        tweetsContainer.style.display = 'block';
     }, 800);
 }
 
