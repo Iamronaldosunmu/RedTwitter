@@ -23,7 +23,8 @@ const lightingOptionButtonOff = document.querySelector('.off');
 const lightsOutContainer = document.querySelector('.lightsOutPopUpContainer');
 const tweetsContainer = document.querySelector('.tweetsContainer');
 const tweets = tweetsContainer.querySelectorAll('.tweet');
-const navTwitterImage = document.querySelector('.navTwitterImage');
+const navTwitterImage = document.querySelector('.navTwitterImage.navTwitterImage--icon');
+const navSearch = document.querySelector('.navTwitterImage.navTwitterImage--search');
 console.log(navTwitterImage);
 let selectedTheme = lightingOptionButtonOn;
 let selectedBottomNavButton = homeBtn;
@@ -134,6 +135,8 @@ function selectaButton(e) {
 function changeBodyTo(nextDisplay) {
     if (nextDisplay == homeBtn) {
         tweetsContainer.style.display = 'none';
+        navTwitterImage.style.display = 'none';
+        navSearch.style.display = 'block';
     }
 }
 

@@ -52,7 +52,7 @@
   .loaderAnimationSvg {
     width: 70px;
     height: 64px;
-    animation: flicker 1s linear 6;
+    animation: flicker 1s linear infinite;
   }
 
   /* Section for the navigation section of the app */
@@ -740,6 +740,12 @@
     align-items: center;
     justify-content: start;
     padding-top: 0;
+  }
+  .navTwitterImage.navTwitterImage--search {
+    display: none;
+    width: 60vw;
+    border: 0;
+    /* border-radius:  */
   }
 }
 @media screen and (min-width: 375px) and (max-width: 400px) {
