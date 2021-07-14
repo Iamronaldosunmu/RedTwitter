@@ -21,15 +21,16 @@ const closeLightsOutPopUp = document.querySelector('.closeLightsOutPopUp');
 const lightingOptionButtonOn = document.querySelector('.on');
 const lightingOptionButtonOff = document.querySelector('.off');
 const lightsOutContainer = document.querySelector('.lightsOutPopUpContainer');
-const  tweetsContainer = document.querySelector('.tweetsContainer');
-
+const tweetsContainer = document.querySelector('.tweetsContainer');
+const tweets = tweetsContainer.querySelectorAll('.tweet');
+const navTwitterImage = document.querySelector('.navTwitterImage');
+console.log(navTwitterImage);
 let selectedTheme = lightingOptionButtonOn;
 let selectedBottomNavButton = homeBtn;
 setTimeout(loaderAnimationStop, 3500);
 
 const arrayOfThingsToChangeInTheme = [body, topNavBar, bottomNavBar, accountInfo, lightsOutContainer, lightsOutPopUp, tweetsContainer];
 
-console.log(arrayOfThingsToChangeInTheme);
 
 let bottomNavBarIcons = [homeBtn, searchBtn, notificationBtn, messageBtn];
 
@@ -83,11 +84,14 @@ function toggleSelectedClass(e){
             return false;
         }
         else{
+
             selectedBottomNavButton.classList.toggle('selected');
             selectedBottomNavButton.classList.toggle('normal');
 
             clickedEl.classList.toggle('selected');
             clickedEl.classList.toggle('normal');
+
+            changeBodyTo(clickedEl);
             selectedBottomNavButton = clickedEl;
            
         }
@@ -115,6 +119,7 @@ function selectaButton(e) {
             return false;
         }
         else {
+        
             selectedTheme.classList.remove('selected');
             clickedEl.classList.add('selected');
             selectedTheme = clickedEl;
@@ -125,6 +130,13 @@ function selectaButton(e) {
         }
     }
 }
+
+function changeBodyTo(nextDisplay) {
+    if (nextDisplay == homeBtn) {
+        tweetsContainer.style.display = 'none';
+    }
+}
+
 function changeLighting(e) {
     closeAccountInfo();
     setTimeout(openLightsPopUp, 200);
