@@ -72,13 +72,22 @@ lightsOutContainer.addEventListener('click', selectaButton );
 allButton.addEventListener('click', selectANotificationsNavButton);
 mentionsButton.addEventListener('click', selectANotificationsNavButton);
 for (item of retweetButtons) {
-    item.addEventListener('click', (e) => {
-        let icon = item.querySelector(".tweetInteractionSectionIcon");
-        icon.classList.toggle('clicked');
-        console.log(icon.classList);
-    })
+    item.addEventListener('click', retweetClicked);
 }
 //Event Listener Functions
+function retweetClicked(e) {
+    this.querySelector('.tweetInteractionSectionIcon').classList.toggle('clicked');
+    let retweetNo = this.nextElementSibling;
+    
+    if ([...this.querySelector('.tweetInteractionSectionIcon').classList].includes('clicked')){
+        retweetNo.innerText = +retweetNo.innerText + 1;
+    }
+    else {
+        retweetNo.innerText = +retweetNo.innerText - 1;
+    }
+
+    
+}
 function showAccountInfo(e) {
     accountInfo.classList.add('showing');
     closeAccountInfoBtn.classList.add('visible');

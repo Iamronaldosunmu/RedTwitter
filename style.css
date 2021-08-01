@@ -626,6 +626,7 @@
     width: 20px;
     height: 20px;
     margin-right: 3px;
+    transition: fill 0.3s;
   }
   .section--retweet .tweetInteractionSectionIcon.clicked {
     fill: rgb(55, 255, 15);
