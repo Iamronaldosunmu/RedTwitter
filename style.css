@@ -69,7 +69,7 @@
     border: 0;
     box-shadow: 0px 0px 7px 2px rgba(255, 255, 255, 0.2);
     display: none;
-    animation: show 0.5s ease-in 1;
+    animation: show 0.3s ease-in 1;
     transition: background-color 0.2s;
     z-index: 1;
   }
@@ -111,13 +111,13 @@
     padding: 0;
     background: transparent;
     transform: translate(5px, -5px);
-    animation: show 0.5s ease-in 1;
+    animation: show 0.3s ease-in 1;
   }
   .navTwitterImage {
     width: 40px;
     height: 40px;
     transform: translateX(5px);
-    animation: show 0.5s ease-in 1;
+    animation: show 0.3s ease-in 1;
   }
   .navTwitterStarImage {
     width: 30px;
@@ -126,7 +126,7 @@
     stroke-width: 1px;
     fill: var(--primary-color);
     transform: translateX(-10px);
-    animation: show 0.5s ease-in 1;
+    animation: show 0.3s ease-in 1;
   }
   .toggle .slide {
     background: var(--primary-color);
@@ -627,6 +627,9 @@
     height: 20px;
     margin-right: 3px;
   }
+  .section--retweet .tweetInteractionSectionIcon.clicked {
+    fill: rgb(55, 255, 15);
+  }
   .tweetInteractionSection .section {
     display: flex;
     flex-direction: row;
@@ -741,11 +744,142 @@
     justify-content: start;
     padding-top: 0;
   }
+  /* Navbar styles for the different screens */
+  .navTwitterImage.navTwitterImage--text {
+    display: none;
+    color: white;
+    font-size: 28px;
+    width: 100%;
+    text-align: center;
+    font-family: sans-serif;
+  }
   .navTwitterImage.navTwitterImage--search {
     display: none;
-    width: 60vw;
+    width: 65vw;
     border: 0;
-    /* border-radius:  */
+    height: 40px;
+    border-radius: 20px;
+    /* margin-bottom: 5px; */
+    padding: 5px 10px;
+    font-size: 17px;
+    color: #757575;
+    background-color: rgba(200, 200, 200, 0.2);
+  }
+  .navTwitterImage.navTwitterImage--search:focus {
+    outline: 0;
+  }
+  /* Styles for the messages container in the Message Screen */
+  .messagesContainer {
+    display: none;
+    width: 100%;
+    padding-top: 50px;
+  }
+  .messagesContainer .chat {
+    display: flex;
+    padding-top: 10px;
+    padding-left: 10px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid rgb(0, 0, 0, 0.3);
+    animation: show 0.3s ease-in;
+  }
+
+  .messagesContainer .displayPicture {
+    width: 48px;
+    height: 48px;
+    border: 0;
+    border-radius: 50%;
+    overflow: hidden;
+    margin-right: 15px;
+  }
+  .messagesContainer .displayPicture img {
+    width: 100%;
+    height: 100%;
+  }
+  .messagesContainer .chatText * {
+    margin: 0;
+  }
+  .messagesContainer .chatText .lastText {
+    margin-top: 5px;
+    width: 34ch;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: 15px;
+    color: var(--dark-grey);
+  }
+  .messagesContainer .displayName {
+    font-weight: 900;
+  }
+  .messagesContainer .displayName .username {
+    color: var(--dark-grey);
+    font-weight: 900;
+  }
+  /* Styles for the notifications container */
+  .notificationsContainer {
+    display: none;
+    width: 100vw;
+    padding-top: 50px;
+    padding-bottom: 55px;
+    overflow: hidden;
+  }
+  .notificationsNav {
+    width: 100vw;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+  }
+  .notificationsNavButton {
+    width: 49vw;
+    padding: 15px 0 10px;
+    font-size: 20px;
+    color: var(--dark-grey);
+    background: transparent;
+    margin: 0;
+    border: 0;
+    display: inline-block;
+    text-align: center;
+    transition: color 0.2s;
+  }
+  .notificationsNavButton:focus {
+    outline: 0;
+  }
+  .notificationsNavButton.selected {
+    color: var(--primary-color);
+  }
+  /* Styles for the slider */
+  .sliderContainer {
+    display: block;
+    width: 100vw;
+    height: 4px;
+  }
+  .sliderContainer .slider {
+    width: 50%;
+    height: 100%;
+    background-color: var(--primary-color);
+    transition: transform 0.3s ease-in-out;
+    /* transform: translateX(100%); */
+  }
+  /* styling the body of the notifications Container */
+  .notificationsBody {
+    width: 200vw;
+    /* overflow: hidden; */
+    display: flex;
+    align-items: center;
+    transition: transform 0.3s ease-in-out;
+  }
+  .notificationsBody.toggled {
+    transform: translateX(-50%);
+  }
+  .allBody,
+  .mentionsBody {
+    width: 100vw;
+  }
+  .allBody {
+    background-color: transparent;
+  }
+  .mentionsBody {
+    background-color: transparent;
   }
 }
 @media screen and (min-width: 375px) and (max-width: 400px) {

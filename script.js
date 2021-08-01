@@ -2,7 +2,7 @@
 
 
 
-//Selecting Items from the DOM
+//Selecting Elements from the DOM
 const loaderAnimationContainer = document.querySelector('#loaderAnimationContainer');
 const topNavBar = document.querySelector('.topNavBar');
 const bottomNavBar = document.querySelector('.bottomNavBar');
@@ -25,7 +25,20 @@ const tweetsContainer = document.querySelector('.tweetsContainer');
 const tweets = tweetsContainer.querySelectorAll('.tweet');
 const navTwitterImage = document.querySelector('.navTwitterImage.navTwitterImage--icon');
 const navSearch = document.querySelector('.navTwitterImage.navTwitterImage--search');
-console.log(navTwitterImage);
+const navText = document.querySelector('.navTwitterImage.navTwitterImage--text');
+const messagesContainer = document.querySelector('.messagesContainer');
+const notificationsContainer = document.querySelector('.notificationsContainer');
+const allButton = document.getElementById('all');
+const mentionsButton = document.getElementById('mentions');
+const slider = document.querySelector('.sliderContainer .slider');
+const notificationsBody = document.querySelector('.notificationsBody');
+const retweetButtons = document.querySelectorAll('.section--retweet .tweetInteractionSectionButton');
+const likeButtons = document.querySelectorAll('.section--like .tweetInteractionSectionButton');
+
+console.log(retweetButtons, likeButtons);
+
+// Selected Items that will be refernenced in later sections
+let selectedNotifiactionsNavButton = allButton;
 let selectedTheme = lightingOptionButtonOn;
 let selectedBottomNavButton = homeBtn;
 setTimeout(loaderAnimationStop, 3500);
@@ -55,7 +68,16 @@ window.addEventListener('click', closeSideBar);
 bottomNavBar.addEventListener('click', toggleSelectedClass);
 lightingBtn.addEventListener('click', changeLighting);
 closeLightsOutPopUp.addEventListener('click', closeLightingSection);
-lightsOutContainer.addEventListener('click', selectaButton )
+lightsOutContainer.addEventListener('click', selectaButton );
+allButton.addEventListener('click', selectANotificationsNavButton);
+mentionsButton.addEventListener('click', selectANotificationsNavButton);
+for (item of retweetButtons) {
+    item.addEventListener('click', (e) => {
+        let icon = item.querySelector(".tweetInteractionSectionIcon");
+        icon.classList.toggle('clicked');
+        console.log(icon.classList);
+    })
+}
 //Event Listener Functions
 function showAccountInfo(e) {
     accountInfo.classList.add('showing');
@@ -134,9 +156,65 @@ function selectaButton(e) {
 
 function changeBodyTo(nextDisplay) {
     if (nextDisplay == homeBtn) {
+        navText.style.display = 'none';
+        navSearch.style.display = 'none';
+        messagesContainer.style.display = 'none';
+        tweetsContainer.style.display = 'block';
+        navTwitterImage.style.display = 'block';
+        notificationsContainer.style.display = 'none';
+    }
+    else if (nextDisplay == searchBtn) {
         tweetsContainer.style.display = 'none';
         navTwitterImage.style.display = 'none';
+        navText.style.display = 'none';
+        messagesContainer.style.display = 'none';
+        navSearch.value="";
         navSearch.style.display = 'block';
+        navSearch.setAttribute('placeholder', 'Search RedTwitter');
+        notificationsContainer.style.display = 'none';
+
+
+    }
+    else if (nextDisplay == messageBtn) {
+        tweetsContainer.style.display = 'none';
+        navTwitterImage.style.display = 'none';
+        navText.style.display = 'none';
+        navSearch.value="";
+        navSearch.style.display = 'block';
+        messagesContainer.style.display = 'block';
+       navSearch.setAttribute('placeholder', 'Search for people and groups');
+       notificationsContainer.style.display = 'none';
+
+    }
+    else if (nextDisplay == notificationBtn) {
+        navSearch.style.display = 'none';
+        messagesContainer.style.display = 'none';
+        navTwitterImage.style.display = 'none';
+        tweetsContainer.style.display = 'none';
+        navText.style.display = 'block';
+       notificationsContainer.style.display = 'block';
+    }
+}
+
+function selectANotificationsNavButton(e) {
+    if (this == selectedNotifiactionsNavButton) {
+        return false;
+    }
+    else {
+        if (this == allButton) {
+            mentionsButton.classList.remove('selected');
+            slider.style.transform = 'translateX(0)';
+            this.classList.add('selected');
+            selectedNotifiactionsNavButton = this;
+            notificationsBody.classList.remove('toggled');
+        }
+        else if (this == mentionsButton) {
+            allButton.classList.remove('selected');
+            slider.style.transform = 'translateX(100%)';
+            this.classList.add('selected');
+            selectedNotifiactionsNavButton = this;
+            notificationsBody.classList.add('toggled');
+        }
     }
 }
 
