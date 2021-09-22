@@ -3,6 +3,8 @@
 
 
 //Selecting Elements from the DOM
+const newTweetInputContainer = document.querySelector('.newTweetInputContainer');
+const closeNewTweetInputContainer = document.querySelector('.closeNewTweetInputContainer');
 const loaderAnimationContainer = document.querySelector('#loaderAnimationContainer');
 const topNavBar = document.querySelector('.topNavBar');
 const bottomNavBar = document.querySelector('.bottomNavBar');
@@ -59,10 +61,15 @@ function loaderAnimationStop() {
         lightsOutPopUp.style.display = 'block';
         closeLightsOutPopUp.style.display = 'block';
         tweetsContainer.style.display = 'block';
+        newTweetInputContainer.style.display = 'block';
+        closeNewTweetInputContainer.style.display = 'block';
+        closeNewTweetInputContainer.style.zIndex = '-5';
     }, 800);
 }
 
 //Event Listeners
+closeNewTweetInputContainer.addEventListener('click', removeNewTweetInput)
+tweetButton.addEventListener('click', showNewTweetInput); //TODO: Create the function
 toggleBtn.addEventListener('click', showAccountInfo);
 window.addEventListener('click', closeSideBar);
 bottomNavBar.addEventListener('click', toggleSelectedClass);
@@ -244,4 +251,16 @@ function closeLightsPopUp() {
     lightsOutPopUp.classList.remove('visible');
     closeLightsOutPopUp.classList.remove('visible');
 }
-
+function showNewTweetInput(e) {
+    closeNewTweetInputContainer.style.zIndex = '4';
+    newTweetInputContainer.classList.add('visible');
+    closeNewTweetInputContainer.classList.add('visible');
+}
+function removeNewTweetInput(e) {
+    newTweetInputContainer.classList.remove('visible');
+    closeNewTweetInputContainer.classList.remove('visible');
+    setTimeout( () => {
+        closeNewTweetInputContainer.style.zIndex = '-5';
+    }, 500);
+}
+// TODO: Style the tweet input container and handle the event to make it show when the tweetButton is clicked.

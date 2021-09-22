@@ -73,7 +73,7 @@
     transition: background-color 0.2s;
     z-index: 1;
   }
-  .tweetButton:hover {
+  .tweetButton:active {
     background-color: #cc423a;
   }
   .tweetButtonImage {
@@ -882,6 +882,60 @@
   .mentionsBody {
     background-color: transparent;
   }
+  /* Adding styles for the new input tweet container */
+  .newTweetInputContainer,
+  .closeNewTweetInputContainer {
+    position: fixed;
+    display: none;
+  }
+  .closeNewTweetInputContainer {
+    /* width: 100vw;
+    height: 100vh; */
+    background-color: black;
+    opacity: 0;
+    transition: opacity 0.5s;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+  }
+  .closeNewTweetInputContainer.visible {
+    opacity: 0.85;
+  }
+  .newTweetInputContainer {
+    left: 5vw;
+    right: 5vw;
+    top: 15vh;
+    bottom: 15vh;
+    border-radius: 10px;
+    opacity: 1;
+    /* background-color: #151414; */
+    background-color: black;
+    transition: transform 0.5s;
+    transform: translateY(85vh);
+    z-index: 5;
+  }
+  .newTweetInputContainer.visible {
+    transform: translateY(0);
+    opacity: 1; /*Change the animation to amake the container slide up from the bottom instead of changing the opacity*/
+  }
+  /* User Section */
+  .userSection {
+    display: flex;
+    height: 80px;
+    padding: 10px;
+  }
+  .userSectionDisplayImage {
+    width: 50px;
+    height: 50px;
+    border-radius: 15px; 
+    overflow: hidden;
+  }
+  .userSectionDisplayImage img {
+    width: 100%;
+    height: 100%;
+  }
+  /*FIXME: The tweet button's z-index is too large, It is still visible in screens other than the home screen  */
 }
 @media screen and (min-width: 375px) and (max-width: 400px) {
   .quotedTweet .headerText {
