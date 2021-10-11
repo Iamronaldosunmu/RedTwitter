@@ -47,7 +47,41 @@ const redLikeIcon = '<svg viewBox="0 0 24 24" aria-hidden="true" class="tweetInt
 const plainLikeIcon = '<svg viewBox="0 0 24 24" aria-hidden="true" class="tweetInteractionSectionIcon"><g><path d="M12 21.638h-.014C9.403 21.59 1.95 14.856 1.95 8.478c0-3.064 2.525-5.754 5.403-5.754 2.29 0 3.83 1.58 4.646 2.73.814-1.148 2.354-2.73 4.645-2.73 2.88 0 5.404 2.69 5.404 5.755 0 6.376-7.454 13.11-10.037 13.157H12zM7.354 4.225c-2.08 0-3.903 1.988-3.903 4.255 0 5.74 7.034 11.596 8.55 11.658 1.518-.062 8.55-5.917 8.55-11.658 0-2.267-1.823-4.255-3.903-4.255-2.528 0-3.94 2.936-3.952 2.965-.23.562-1.156.562-1.387 0-.014-.03-1.425-2.965-3.954-2.965z"></path></g></svg>';
 const homeBtnEventParameter = {target: document.querySelector('.navBarIconContainer .homeBtn')};
 const tweetOptions = document.querySelectorAll('.tweetOptions');
-console.log(retweetButtons, likeButtons);
+const cssLoader = document.querySelector('.cssLoader');
+
+// The tweet Class
+class Tweet {
+    constructor(content, commentNo, retweetNo, likeNo) {
+        this.content = content;
+        this.commentNo = commentNo;
+        this.retweetNo = retweetNo;
+        this.likeNo = likeNo;
+    }
+    returnTweetElement () {
+        const {content, commentNo, retweetNo, likeNo} = this;
+        // const originalTweet = document.querySelector('.tweet'); 
+        const tweet = originalTweet.cloneNode(true);
+        const likeButton = tweet.querySelector('.section--like .tweetInteractionSectionButton');
+        likeButton.addEventListener('click', likeClicked);
+        const tweetOption = tweet.querySelector('.tweetOptions');
+        tweetOption.addEventListener('click', showFollowMeSection);
+        const retweetButton = tweet.querySelector('.section--retweet .tweetInteractionSectionButton');
+        retweetButton.addEventListener('click', retweetClicked);
+        const tweetContent = tweet.querySelector('.tweetContentText');
+        tweetContent.innerText = content;
+        const tweetCommentNo = tweet.querySelector('.commentNo');
+        tweetCommentNo.innerText = commentNo;
+        const tweetRetweetNo = tweet.querySelector('.retweetNo');
+        tweetRetweetNo.innerText = retweetNo;
+        const tweetLikeNo = tweet.querySelector('.likeNo');
+        tweetLikeNo.innerText = likeNo;
+
+        return tweet;
+
+    }
+}
+
+
 
 // Selected Items that will be refernenced in later sections
 let selectedNotifiactionsNavButton = allButton;
@@ -81,9 +115,7 @@ function loaderAnimationStop() {
 }
 
 //Event Listeners
-tweetsContainer.addEventListener('scroll', ( (e) => {
-    console.log('A scroll just occured');
-}))
+window.addEventListener('scroll', infiniteScrollFunction);
 navTwitterStarImage.addEventListener('click', showFollowMeSection);
 closeFollowMeSection.addEventListener('click', removeCloseFollowMeSection);
 closeNewTweetInputContainer.addEventListener('click', removeNewTweetInput)
@@ -334,41 +366,61 @@ function handleSubmit(e) {
     tweetsContainer.insertBefore(tweet, tweetsContainer.firstChild);
     changeBodyTo(homeBtn);
     toggleSelectedClass(homeBtnEventParameter);
+    window.scrollTo(0, 0);
     
 
 }
-// TODO: Style the tweet input container and handle the event to make it show when the tweetButton is clicked.
+const tweetObjects = [
+    new Tweet("This is the tweet Content", 5, 6, 7),
+    new Tweet("I once heard a story of a young man that wanted nothing but money in life", 5, 6, 7),
+    new Tweet("I necer subscribe to guys on the internet looking for the fame and clout they veber deserve", 5, 6, 7),
+    new Tweet("Burna Boy >>>> Davido", 5, 6, 7),
+    new Tweet("Overthinking no fit solve problem, make another man no come chop my sweat", 5, 6, 7),
+    new Tweet("This is the tweet Content", 5, 6, 7),
+    new Tweet("This should not be printed on the first scroll", 1, 2, 3)
+];
+function showLoading () {
+    cssLoader.classList.add('visible');
+    setTimeout(() => {
+    cssLoader.classList.remove('visible');
+    setTimeout(() => {
+        fetchNewTweets(tweetObjects);
+    }, 300);
+    }, 1200);
+}
 
-class Tweet {
-    constructor(content, commentNo, retweetNo, likeNo) {
-        this.content = content;
-        this.commentNo = commentNo;
-        this.retweetNo = retweetNo;
-        this.likeNo = likeNo;
+function fetchNewTweets(arrayOfTweetObjects) {
+    const {length} = arrayOfTweetObjects;
+    let count = 5;
+    if (length) {
+        //Remove 5 objects from array if it has more than 5 objects or remove all the elements if it isnt up to 5
+        for (let finalIndex = length - 1; (finalIndex > (length - 6)) && !(finalIndex < 0); finalIndex--){
+            const tweet = arrayOfTweetObjects.pop().returnTweetElement();
+            tweetsContainer.insertBefore(tweet, cssLoader.parentElement);
+            count--;
+        }
     }
-    returnTweetElement () {
-        const {content, commentNo, retweetNo, likeNo} = this;
-        // const originalTweet = document.querySelector('.tweet'); 
-        const tweet = originalTweet.cloneNode(true);
-        const likeButton = tweet.querySelector('.section--like .tweetInteractionSectionButton');
-        likeButton.addEventListener('click', likeClicked);
-        const tweetOption = tweet.querySelector('.tweetOptions');
-        tweetOption.addEventListener('click', showFollowMeSection);
-        const retweetButton = tweet.querySelector('.section--retweet .tweetInteractionSectionButton');
-        retweetButton.addEventListener('click', retweetClicked);
-        const tweetContent = tweet.querySelector('.tweetContentText');
-        tweetContent.innerText = content;
-        const tweetCommentNo = tweet.querySelector('.commentNo');
-        tweetCommentNo.innerText = commentNo;
-        const tweetRetweetNo = tweet.querySelector('.retweetNo');
-        tweetRetweetNo.innerText = retweetNo;
-        const tweetLikeNo = tweet.querySelector('.likeNo');
-        tweetLikeNo.innerText = likeNo;
+    else {
+        for (let i = 0; i < count; i++) {
 
-        return tweet;
-
+            const tweet = new Tweet("This is a very recent tweet similar to lorem Ipsum dolor", 12, 32, 4);
+            tweetsContainer.insertBefore(tweet.returnTweetElement(), cssLoader.parentElement);
+        }
+        
     }
 }
+// TODO: Properly imlement the fetch new tweets function by giving it an array of elements to take in and then remove those elements from the original array untill it finally finishes, when there are no new tweets to add, it returns tweets of lorem ipmsum dolor;
+
+function infiniteScrollFunction ( ) {
+    const {scrollTop, scrollHeight, clientHeight} = document.documentElement;
+    if (scrollTop + clientHeight >= scrollHeight - 3) {
+        showLoading();
+    }
+}
+
+// TODO: Style the tweet input container and handle the event to make it show when the tweetButton is clicked.
+
+
 //TODO: Implement Light mode for the follow me section pop up . DONE .
 //TODO: Note that the loop for the tweet option buttons may be slowing down the code . DONE .
 //TODO: Make the options button on all the tweet to open the follow me section . DONE .
@@ -378,3 +430,4 @@ class Tweet {
 //TODO: Try to ensure that the layout looks good on all devices
 //TODO: Don't forget the layout problem on bigger screens
 //TODO: Make the share button in the tweet interaction section container to link the user to another page
+//TODO: Use the filled svg like button instead of interchanging between the icons, it makes it harder to animate, instead, used the filled svg and animate the stroke and fill properties
