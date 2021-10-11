@@ -529,18 +529,46 @@
   }
   .tweet.tweet--notification {
     display: grid;
+    column-gap: 15px;
     width: 100vw;
     grid-template-columns: 32px auto;
     padding: 10px;
-    padding-left: 30px;
+    padding-left: 40px;
+    font-family: sans-serif;
   }
   .notificationSvgContainerSvg {
     width: 100%;
   }
-  .notificationSvgContainerSvg.contact {
-    fill: aliceblue;
+  .notificationTweetContent .userPictures img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
   }
-
+  .notificationsBody.lightTheme .notificationTweetMessage {
+    color: black;
+  }
+  .notificationTweetMessage {
+    color: white;
+    margin: 4px 0 0;
+    font-size: 17px;
+    transition: color var(--theme-change-time);
+  }
+  .notificationTweetMessage .contactName {
+    font-weight: 700;
+  }
+  .notificationSvgContainerSvg.contact {
+    fill: rgb(29, 155, 240);
+  }
+  .notificationTweetContent .notificationContent {
+    color: var(--dark-grey);
+    margin: 4px 0 0;
+  }
+  .notificationSvgContainerSvg.like {
+    fill: var(--twitter-like-color);
+  }
+  .notificationSvgContainerSvg.retweet {
+    fill: rgb(55 255 15);
+  }
   .tweetsContainer.lightTheme .tweet {
     border-bottom: 1px solid rgba(0, 0, 0, 0.3);
   }
@@ -819,7 +847,7 @@
   .trendingSearchesContainer {
     display: none;
     width: 100%;
-    padding-top: 50px;
+    padding: 50px 0 55px;
     overflow: hidden;
   }
   .mostTrendingSearch {
