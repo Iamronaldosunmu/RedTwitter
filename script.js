@@ -81,6 +81,9 @@ function loaderAnimationStop() {
 }
 
 //Event Listeners
+tweetsContainer.addEventListener('scroll', ( (e) => {
+    console.log('A scroll just occured');
+}))
 navTwitterStarImage.addEventListener('click', showFollowMeSection);
 closeFollowMeSection.addEventListener('click', removeCloseFollowMeSection);
 closeNewTweetInputContainer.addEventListener('click', removeNewTweetInput)
@@ -369,8 +372,9 @@ class Tweet {
 //TODO: Implement Light mode for the follow me section pop up . DONE .
 //TODO: Note that the loop for the tweet option buttons may be slowing down the code . DONE .
 //TODO: Make the options button on all the tweet to open the follow me section . DONE .
-//TODO: Style the tweets that will appear in the notifications container
+//TODO: Style the tweets that will appear in the notifications container . DONE .
 //TODO: Implement Infinite Scroll in the tweets Container
 //TODO: Implement Filter on the trending Searches and the current messages whenever something is typed into the input field
 //TODO: Try to ensure that the layout looks good on all devices
 //TODO: Don't forget the layout problem on bigger screens
+//TODO: Make the share button in the tweet interaction section container to link the user to another page

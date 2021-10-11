@@ -104,7 +104,6 @@
   }
   .topNavBar.lightTheme .navTwitterImage--text {
     color: var(--dark-grey);
-  
   }
   .toggle {
     width: 40px;
@@ -587,11 +586,12 @@
     margin: 0 0 5px;
     line-height: 1.34;
   }
-  .tweet.tweet--reply .replySection .reply{
+  .tweet.tweet--reply .replySection .reply {
     color: var(--dark-grey);
   }
   .tweet.tweet--reply .replySection .usernames {
-    color:#5a69ff;
+    /* color:rgb(29 155 240); */
+    color: var(--primary-color);
   }
   .tweetUserImagePicture {
     width: 65px;
@@ -867,7 +867,7 @@
     top: 0;
     width: 100%;
     height: 100%;
-    background-image: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.90));
+    background-image: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.9));
     padding: 12px 12px;
   }
   .trendingSearchesText {
@@ -877,7 +877,7 @@
   .trendingSearchesHashTag,
   .trendingWith {
     color: white;
-    font-family: 'Open Sans', sans-serif;
+    font-family: "Open Sans", sans-serif;
     margin: 2px 8px;
   }
   .trendingSearchesTopic {
@@ -900,7 +900,7 @@
     background-color: white;
   }
   .trendingSearchesContainer.lightTheme .trendHeader,
-  .trendingSearchesContainer.lightTheme .trendBody{
+  .trendingSearchesContainer.lightTheme .trendBody {
     color: black;
   }
   /* Styles for the Trend Section */
@@ -932,7 +932,7 @@
   .trendHeader {
     margin: 0;
     color: white;
-    font-family: 'Open Sans', sans-serif;
+    font-family: "Open Sans", sans-serif;
   }
   .accountName {
     font-weight: 600;
@@ -942,7 +942,7 @@
     margin: 0;
     font-weight: 800;
     font-size: 16px;
-    font-family: 'Open Sans', sans-serif;
+    font-family: "Open Sans", sans-serif;
   }
   .trendHeader .date {
     color: var(--dark-grey);
@@ -988,7 +988,7 @@
   }
   .messagesContainer .displayName {
     font-weight: 900;
-    font-family: 'Open Sans', sans-serif;
+    font-family: "Open Sans", sans-serif;
     color: white;
   }
   .messagesContainer.lightTheme .displayName {
@@ -1120,7 +1120,6 @@
   }
   .userSectionWrapper {
     display: flex;
-
   }
   .userSectionDisplayImage {
     width: 50px;
@@ -1157,7 +1156,6 @@
     font-weight: 600;
     font-family: "Open Sans", sans-serif;
     text-decoration: none;
-
   }
   .tweetInput {
     width: 92%;
@@ -1185,7 +1183,7 @@
     color: white;
     font-weight: 600;
     font-family: "Open Sans", sans-serif;
-  } 
+  }
   /* Follow me section */
   .followMeSection {
     width: 100vw;
@@ -1220,7 +1218,7 @@
     left: calc(50% - 22.5px);
   }
   .followMeButtonContainer {
-    display:  flex;
+    display: flex;
     align-items: center;
     justify-content: center;
   }
@@ -1233,7 +1231,7 @@
     border-radius: 10px;
     margin-left: auto;
     margin-right: auto;
-    font-family: 'Open Sans', sans-serif;
+    font-family: "Open Sans", sans-serif;
     font-size: 20px;
     max-width: 275px;
     font-weight: 700;
@@ -1262,6 +1260,36 @@
     opacity: 0.85;
   }
 
+  /* Styles for the css Loader Container */
+  .cssLoaderContainer {
+    width: 100vw;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .cssLoader {
+    display: flex;
+  }
+  .cssLoader .circle {
+    width: 11px;
+    background-color: var(--primary-color);
+    height: 11px;
+    border-radius: 50%;
+    margin: 4px;
+    animation: bounce 0.5s infinite ease-in;
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+  .cssLoader .circle:nth-of-type(2) {
+    animation-delay: 0.1s;
+  }
+  .cssLoader .circle:nth-of-type(3) {
+    animation-delay: 0.2s;
+  }
+  .cssLoader.visible {
+    opacity: 1;
+  }
   /*FIXME: The tweet button's z-index is too large, It is still visible in screens other than the home screen  */
 }
 @media screen and (min-width: 375px) and (max-width: 400px) {
@@ -1404,5 +1432,15 @@
   }
   100% {
     opacity: 1;
+  }
+}
+/* Animation for the css Loader at the bottom of the tweets Container */
+@keyframes bounce {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
   }
 }
