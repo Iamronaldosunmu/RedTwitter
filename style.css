@@ -1,5 +1,5 @@
 /*TODO: Ask the user to choose their theme color for twitter*/
-@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@600&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;600;700;900&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Lato:wght@300;400&display=swap");
 
 * {
@@ -9,6 +9,7 @@
   --primary-color: #ff5349;
   --dark-grey: rgb(110 118 125);
   --theme-change-time: 0.5s;
+  --twitter-like-color: rgb(249, 24, 128);
 }
 /* Media Query for Phones (Small Devices) */
 @media screen and (max-width: 499px) {
@@ -100,6 +101,10 @@
   .topNavBar.lightTheme {
     background-color: white;
     box-shadow: 0px 0.6px rgba(0, 0, 0, 0.1);
+  }
+  .topNavBar.lightTheme .navTwitterImage--text {
+    color: var(--dark-grey);
+  
   }
   .toggle {
     width: 40px;
@@ -522,6 +527,20 @@
     transition: border-bottom var(--theme-change-time);
     /* height: 300px; */
   }
+  .tweet.tweet--notification {
+    display: grid;
+    width: 100vw;
+    grid-template-columns: 32px auto;
+    padding: 10px;
+    padding-left: 30px;
+  }
+  .notificationSvgContainerSvg {
+    width: 100%;
+  }
+  .notificationSvgContainerSvg.contact {
+    fill: aliceblue;
+  }
+
   .tweetsContainer.lightTheme .tweet {
     border-bottom: 1px solid rgba(0, 0, 0, 0.3);
   }
@@ -535,6 +554,16 @@
     padding-top: 10px;
     padding-left: 10px;
     padding-right: 5px;
+  }
+  .tweet.tweet--reply .replySection {
+    margin: 0 0 5px;
+    line-height: 1.34;
+  }
+  .tweet.tweet--reply .replySection .reply{
+    color: var(--dark-grey);
+  }
+  .tweet.tweet--reply .replySection .usernames {
+    color:#5a69ff;
   }
   .tweetUserImagePicture {
     width: 65px;
@@ -628,8 +657,23 @@
     margin-right: 3px;
     transition: fill 0.3s;
   }
+  .tweetInteractionSectionIcon.red {
+    fill: var(--twitter-like-color);
+  }
   .section--retweet .tweetInteractionSectionIcon.clicked {
     fill: rgb(55, 255, 15);
+  }
+  .section--retweet .retweetNo {
+    transition: color 0.3s;
+  }
+  .section--retweet .retweetNo.clicked {
+    color: rgb(55, 255, 15);
+  }
+  .section--retweet .likeNo {
+    transition: color 0.3s;
+  }
+  .section--like .likeNo.clicked {
+    color: var(--twitter-like-color);
   }
   .tweetInteractionSection .section {
     display: flex;
@@ -641,6 +685,7 @@
     background: transparent;
     border: 0;
   }
+
   .tweetInteractionSection .section div {
     color: var(--dark-grey);
     font-size: 13.5px;
@@ -734,7 +779,7 @@
     color: white;
     transition: color var(--theme-change-time);
   }
-  .tweetsContainer .quotedTweet .quotedTweetText {
+  .tweetsContainer.lightTheme .quotedTweet .quotedTweetText {
     color: black;
   }
   .quotedTweet header {
@@ -753,6 +798,7 @@
     width: 100%;
     text-align: center;
     font-family: sans-serif;
+    transition: color var(--theme-change-time);
   }
   .navTwitterImage.navTwitterImage--search {
     display: none;
@@ -769,6 +815,110 @@
   .navTwitterImage.navTwitterImage--search:focus {
     outline: 0;
   }
+  /* Styles for the trending Searches Container on the Search screen */
+  .trendingSearchesContainer {
+    display: none;
+    width: 100%;
+    padding-top: 50px;
+    overflow: hidden;
+  }
+  .mostTrendingSearch {
+    width: 100%;
+    overflow: hidden;
+    height: 225px;
+    position: relative;
+    animation: show 0.3s ease-in 1;
+  }
+  .mostTrendingSearch img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .mostTrendingSearchOverlay {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-image: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.90));
+    padding: 12px 12px;
+  }
+  .trendingSearchesText {
+    margin-top: 123px;
+  }
+  .trendingSearchesTopic,
+  .trendingSearchesHashTag,
+  .trendingWith {
+    color: white;
+    font-family: 'Open Sans', sans-serif;
+    margin: 2px 8px;
+  }
+  .trendingSearchesTopic {
+    font-weight: 600;
+  }
+  .trendingSearchesTopic .now {
+    font-weight: 200;
+    font-size: 18px;
+  }
+  .trendingWith {
+    /* font-family: 'Lato', sans-serif; */
+    font-weight: 500;
+    word-spacing: 5px;
+  }
+  .trendingSearchesHashTag {
+    font-size: 22px;
+    font-weight: 900;
+  }
+  .trendingSearchesContainer.lightTheme .trend {
+    background-color: white;
+  }
+  .trendingSearchesContainer.lightTheme .trendHeader,
+  .trendingSearchesContainer.lightTheme .trendBody{
+    color: black;
+  }
+  /* Styles for the Trend Section */
+  .trend.trendWithPic {
+    display: grid;
+    grid-template-columns: auto 100px;
+    padding: 10px;
+    background: black;
+    column-gap: 20px;
+    animation: show 0.3s ease-in;
+  }
+  .trendImageSection img {
+    width: 100%;
+    height: 100%;
+    border-radius: 15px;
+    object-fit: cover;
+    height: 100px;
+  }
+  .smallImage {
+    display: inline-block;
+    margin-top: 2px;
+  }
+  .smallImage img {
+    width: 16px;
+    height: 16px;
+    object-fit: cover;
+    border-radius: 100%;
+  }
+  .trendHeader {
+    margin: 0;
+    color: white;
+    font-family: 'Open Sans', sans-serif;
+  }
+  .accountName {
+    font-weight: 600;
+  }
+  .trendBody {
+    color: white;
+    margin: 0;
+    font-weight: 800;
+    font-size: 16px;
+    font-family: 'Open Sans', sans-serif;
+  }
+  .trendHeader .date {
+    color: var(--dark-grey);
+  }
   /* Styles for the messages container in the Message Screen */
   .messagesContainer {
     display: none;
@@ -776,21 +926,21 @@
     padding-top: 50px;
   }
   .messagesContainer .chat {
-    display: flex;
-    padding-top: 10px;
-    padding-left: 10px;
-    padding-bottom: 10px;
-    border-bottom: 1px solid rgb(0, 0, 0, 0.3);
+    display: grid;
+    grid-template-columns: 68px auto;
+    padding: 10px;
+    /* border-bottom: 1px solid rgb(0, 0, 0, 0.3); */
+    border: 0;
     animation: show 0.3s ease-in;
   }
 
   .messagesContainer .displayPicture {
-    width: 48px;
-    height: 48px;
+    width: 58px;
+    height: 58px;
     border: 0;
     border-radius: 50%;
     overflow: hidden;
-    margin-right: 15px;
+    /* margin-right: 15px; */
   }
   .messagesContainer .displayPicture img {
     width: 100%;
@@ -800,20 +950,26 @@
     margin: 0;
   }
   .messagesContainer .chatText .lastText {
-    margin-top: 5px;
-    width: 34ch;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    font-size: 15px;
+    margin-top: 2px;
+    /* width: 34ch; */
+    /* white-space: nowrap; */
+    /* overflow: hidden; */
+    /* text-overflow: ellipsis; */
+    font-size: 14px;
     color: var(--dark-grey);
   }
   .messagesContainer .displayName {
     font-weight: 900;
+    font-family: 'Open Sans', sans-serif;
+    color: white;
+  }
+  .messagesContainer.lightTheme .displayName {
+    color: black;
+    transition: var(--theme-change-time);
   }
   .messagesContainer .displayName .username {
     color: var(--dark-grey);
-    font-weight: 900;
+    font-weight: 500;
   }
   /* Styles for the notifications container */
   .notificationsContainer {
@@ -865,12 +1021,16 @@
   .notificationsBody {
     width: 200vw;
     /* overflow: hidden; */
-    display: flex;
-    align-items: center;
+    display: grid;
+    grid-template-columns: 100vw 100vw;
     transition: transform 0.3s ease-in-out;
   }
   .notificationsBody.toggled {
     transform: translateX(-50%);
+  }
+  .notificationsBody.lightTheme section.tweetContentText,
+  .notificationsBody.lightTheme .displayName {
+    color: black;
   }
   .allBody,
   .mentionsBody {
@@ -881,6 +1041,9 @@
   }
   .mentionsBody {
     background-color: transparent;
+  }
+  .notificationsBody.lightTheme .tweet {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.3);
   }
   /* Adding styles for the new input tweet container */
   .newTweetInputContainer,
@@ -924,22 +1087,161 @@
     display: flex;
     height: 80px;
     padding: 10px;
+    justify-content: space-between;
+    width: 100%;
+  }
+  .userSectionWrapper {
+    display: flex;
+
   }
   .userSectionDisplayImage {
     width: 50px;
     height: 50px;
-    border-radius: 15px; 
+    border-radius: 15px;
     overflow: hidden;
+    margin-right: 10px;
+    margin-top: 5px;
   }
+  .userSectionDisplayText h2 {
+    margin: 0;
+  }
+  .userSectionDisplayText h2:nth-of-type(2) {
+    margin: 0;
+    margin-top: 2px;
+  }
+
   .userSectionDisplayImage img {
     width: 100%;
     height: 100%;
   }
+  .followButtonSection {
+    display: flex;
+    justify-content: center;
+    height: 100%;
+    align-items: center;
+  }
+  .followButton {
+    border: 0;
+    background-color: var(--primary-color);
+    padding: 10px;
+    border-radius: 8px;
+    color: white;
+    font-weight: 600;
+    font-family: "Open Sans", sans-serif;
+    text-decoration: none;
+
+  }
+  .tweetInput {
+    width: 92%;
+    margin: 0 4%;
+    height: 44vh;
+    border-radius: 15px;
+    outline: none;
+    border: 0;
+    background-color: #151414;
+    color: white;
+    text-align: center;
+    display: block;
+    font-size: 17px;
+  }
+  .tweetInputSubmitButton {
+    margin: 0 4%;
+    width: 92%;
+    border-radius: 7.5px;
+    margin-top: 10px;
+    font-size: 15px;
+    padding: 2vh 0;
+    border: 0;
+    outline: 0;
+    background-color: var(--primary-color);
+    color: white;
+    font-weight: 600;
+    font-family: "Open Sans", sans-serif;
+  } 
+  /* Follow me section */
+  .followMeSection {
+    width: 100vw;
+    display: none;
+    position: fixed;
+    height: 45vh;
+    z-index: 5;
+    background-color: rgba(8, 8, 8);
+    bottom: 0;
+    transform: translateY(45vh);
+    transition: transform 0.35s;
+    border-top-left-radius: 25px;
+    border-top-right-radius: 25px;
+  }
+  .followMeSection .followMeSVG {
+    width: 27vw;
+    display: block;
+    margin: 40px auto;
+  }
+  .followMeSection.visible {
+    transform: translateY(0);
+  }
+  .followMeSection::after {
+    position: absolute;
+    content: "";
+    display: block;
+    width: 45px;
+    height: 8px;
+    background: rgba(123, 123, 123, 0.3);
+    border-radius: 5px;
+    top: 10px;
+    left: calc(50% - 22.5px);
+  }
+  .followMeButtonContainer {
+    display:  flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .followMeSection .followMeButton {
+    display: block;
+    text-align: center;
+    background-color: var(--primary-color);
+    padding: 12px;
+    border: 0;
+    border-radius: 10px;
+    margin-left: auto;
+    margin-right: auto;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 20px;
+    max-width: 275px;
+    font-weight: 700;
+    text-decoration: none;
+    color: rgba(8, 8, 8);
+  }
+  .followMeSection.lightTheme {
+    background-color: white;
+  }
+  .followMeSection .followMeButton {
+    color: white;
+  }
+  .closeFollowMeSection {
+    position: fixed;
+    display: none;
+    background-color: black;
+    opacity: 0;
+    transition: opacity 0.5s;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+  }
+
+  .closeFollowMeSection.visible {
+    opacity: 0.85;
+  }
+
   /*FIXME: The tweet button's z-index is too large, It is still visible in screens other than the home screen  */
 }
 @media screen and (min-width: 375px) and (max-width: 400px) {
   .quotedTweet .headerText {
     width: 21ch;
+  }
+  .tweetInput {
+    height: 47vh;
   }
 }
 @media screen and (min-width: 400px) and (max-width: 420px) {

@@ -3,7 +3,8 @@
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- The line belowe prevents the page from being zoomed in -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
     <title>RedTwitter</title>
     <link rel="stylesheet" href="style.css" />
   </head>
@@ -246,8 +247,9 @@
       </div>
       <div class="closeLightsOutPopUp ">
       </div>
-      <!-- TODO: Add the animate on scroll library so that tweets come in with a nice effect everytime the user scrolls down the screen -->
+      <!-- Section for the tweets Container -->
       <div class="tweetsContainer">
+        <!-- Normal Tweet with only text -->
         <div class="tweet">
           <section class="tweetUserImage">
             <div class="tweetUserImagePicture">
@@ -286,20 +288,19 @@ Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit eius temp
   </div>
   <div class="section section--like">
     <button class="tweetInteractionSectionButton">
-
       <svg viewBox="0 0 24 24" aria-hidden="true" class="tweetInteractionSectionIcon"><g><path d="M12 21.638h-.014C9.403 21.59 1.95 14.856 1.95 8.478c0-3.064 2.525-5.754 5.403-5.754 2.29 0 3.83 1.58 4.646 2.73.814-1.148 2.354-2.73 4.645-2.73 2.88 0 5.404 2.69 5.404 5.755 0 6.376-7.454 13.11-10.037 13.157H12zM7.354 4.225c-2.08 0-3.903 1.988-3.903 4.255 0 5.74 7.034 11.596 8.55 11.658 1.518-.062 8.55-5.917 8.55-11.658 0-2.267-1.823-4.255-3.903-4.255-2.528 0-3.94 2.936-3.952 2.965-.23.562-1.156.562-1.387 0-.014-.03-1.425-2.965-3.954-2.965z"></path></g></svg>
     </button>
     <div class="likeNo">3</div>
   </div>
   <div class="section section--share">
     <button class="tweetInteractionSectionButton">
-
       <svg viewBox="0 0 24 24" aria-hidden="true" class="tweetInteractionSectionIcon"><g><path d="M17.53 7.47l-5-5c-.293-.293-.768-.293-1.06 0l-5 5c-.294.293-.294.768 0 1.06s.767.294 1.06 0l3.72-3.72V15c0 .414.336.75.75.75s.75-.336.75-.75V4.81l3.72 3.72c.146.147.338.22.53.22s.384-.072.53-.22c.293-.293.293-.767 0-1.06z"></path><path d="M19.708 21.944H4.292C3.028 21.944 2 20.916 2 19.652V14c0-.414.336-.75.75-.75s.75.336.75.75v5.652c0 .437.355.792.792.792h15.416c.437 0 .792-.355.792-.792V14c0-.414.336-.75.75-.75s.75.336.75.75v5.652c0 1.264-1.028 2.292-2.292 2.292z"></path></g></svg>      
     </button>
   </div>
 </section>
           </section>
         </div>
+        <!--  Tweet with an image -->
         <div class="tweet tweet--image">
           <section class="tweetUserImage">
             <div class="tweetUserImagePicture">
@@ -357,6 +358,7 @@ Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit eius temp
 
           </section>
         </div>
+        <!-- Tweet that contains a link -->
         <div class="tweet tweet--link">
           <section class="tweetUserImage">
             <div class="tweetUserImagePicture">
@@ -488,7 +490,7 @@ Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit eius temp
           </section>
         </div>
       </div>
-
+      <!-- The messages container -->
       <!-- TODO: Add the styles for the messages in the messages container -->
       <div class="messagesContainer">
         <div class="chat">
@@ -497,7 +499,7 @@ Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit eius temp
           </section>
           <section class="chatText">
             <header class="displayName">KSI <span class="username">@LordKSI</span></header>
-            <p class="lastText">Yo, JJ, when next are you coming to nigeria</p>
+            <p class="lastText">Yo, JJ, when next are you coming to nigeria and say hi to simon</p>
           </section>
         </div>
         <div class="chat">
@@ -506,7 +508,7 @@ Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit eius temp
           </section>
           <section class="chatText">
             <header class="displayName">KSI <span class="username">@LordKSI</span></header>
-            <p class="lastText">Yo, JJ, when next are you coming to nigeria</p>
+            <p class="lastText">Yo, JJ, when next are you coming to nigeria and say hi to simon</p>
           </section>
         </div>
         <div class="chat">
@@ -515,7 +517,7 @@ Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit eius temp
           </section>
           <section class="chatText">
             <header class="displayName">KSI <span class="username">@LordKSI</span></header>
-            <p class="lastText">Yo, JJ, when next are you coming to nigeria</p>
+            <p class="lastText">Yo, JJ, when next are you coming to nigeria and say hi to simon</p>
           </section>
         </div>
         <div class="chat">
@@ -524,7 +526,7 @@ Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit eius temp
           </section>
           <section class="chatText">
             <header class="displayName">KSI <span class="username">@LordKSI</span></header>
-            <p class="lastText">Yo, JJ, when next are you coming to nigeria</p>
+            <p class="lastText">Yo, JJ, when next are you coming to nigeria and say hi to simon</p>
           </section>
         </div>
         <div class="chat">
@@ -533,7 +535,7 @@ Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit eius temp
           </section>
           <section class="chatText">
             <header class="displayName">KSI <span class="username">@LordKSI</span></header>
-            <p class="lastText">Yo, JJ, when next are you coming to nigeria</p>
+            <p class="lastText">Yo, JJ, when next are you coming to nigeria and say hi to simon</p>
           </section>
         </div>
       </div>
@@ -548,57 +550,11 @@ Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit eius temp
       </div>
       <section class="notificationsBody">
       <section class="allBody">
-        <div class="tweet">
-          <section class="tweetUserImage">
-            <div class="tweetUserImagePicture">
-            <img class="userImage" src="images/ws_3D_Abstract_Art_1680x1050.webp"/>
-            </div>
+        <div class="tweet tweet--notification">
+          <section class="notificationSvgContainer">
+<svg viewBox="0 0 24 24" aria-hidden="true" class="notificationSvgContainerSvg contact"><g><path d="M12.225 12.165c-1.356 0-2.872-.15-3.84-1.256-.814-.93-1.077-2.368-.805-4.392.38-2.826 2.116-4.513 4.646-4.513s4.267 1.687 4.646 4.513c.272 2.024.008 3.46-.806 4.392-.97 1.106-2.485 1.255-3.84 1.255zm5.849 9.85H6.376c-.663 0-1.25-.28-1.65-.786-.422-.534-.576-1.27-.41-1.968.834-3.53 4.086-5.997 7.908-5.997s7.074 2.466 7.91 5.997c.164.698.01 1.434-.412 1.967-.4.505-.985.785-1.648.785z"></path></g></svg>
           </section>
-          <section class="tweetContent">
-            <header>
-              <p class="headerText">
-                <span class="displayName">MicrosoftMEA</span>
-                <span class="userName">@MicrosoftMEAabsdsndsjdj</span>
-              </p>
-              <button class="tweetOptions">
-<div class="smallCircle"></div>
-<div class="smallCircle"></div>
-<div class="smallCircle"></div>
-              </button>
-
-            </header>
-            <section class="tweetContentText">
-Lorem ipsum dolor sit amet consectetur adipisicing elit.       </section>
-<section class="tweetInteractionSection">
-  <div class="section section--comment">
-    <button class="tweetInteractionSectionButton">
-
-      <svg viewBox="0 0 24 24" aria-hidden="true" class="tweetInteractionSectionIcon"><g><path d="M14.046 2.242l-4.148-.01h-.002c-4.374 0-7.8 3.427-7.8 7.802 0 4.098 3.186 7.206 7.465 7.37v3.828c0 .108.044.286.12.403.142.225.384.347.632.347.138 0 .277-.038.402-.118.264-.168 6.473-4.14 8.088-5.506 1.902-1.61 3.04-3.97 3.043-6.312v-.017c-.006-4.367-3.43-7.787-7.8-7.788zm3.787 12.972c-1.134.96-4.862 3.405-6.772 4.643V16.67c0-.414-.335-.75-.75-.75h-.396c-3.66 0-6.318-2.476-6.318-5.886 0-3.534 2.768-6.302 6.3-6.302l4.147.01h.002c3.532 0 6.3 2.766 6.302 6.296-.003 1.91-.942 3.844-2.514 5.176z"></path></g></svg>
-    </button>
-    <div class="commentNo">4</div>
-  </div>
-  <div class="section section--retweet">
-    <button class="tweetInteractionSectionButton">
-
-      <svg viewBox="0 0 24 24" aria-hidden="true" class="tweetInteractionSectionIcon"><g><path d="M23.77 15.67c-.292-.293-.767-.293-1.06 0l-2.22 2.22V7.65c0-2.068-1.683-3.75-3.75-3.75h-5.85c-.414 0-.75.336-.75.75s.336.75.75.75h5.85c1.24 0 2.25 1.01 2.25 2.25v10.24l-2.22-2.22c-.293-.293-.768-.293-1.06 0s-.294.768 0 1.06l3.5 3.5c.145.147.337.22.53.22s.383-.072.53-.22l3.5-3.5c.294-.292.294-.767 0-1.06zm-10.66 3.28H7.26c-1.24 0-2.25-1.01-2.25-2.25V6.46l2.22 2.22c.148.147.34.22.532.22s.384-.073.53-.22c.293-.293.293-.768 0-1.06l-3.5-3.5c-.293-.294-.768-.294-1.06 0l-3.5 3.5c-.294.292-.294.767 0 1.06s.767.293 1.06 0l2.22-2.22V16.7c0 2.068 1.683 3.75 3.75 3.75h5.85c.414 0 .75-.336.75-.75s-.337-.75-.75-.75z"></path></g></svg>
-    </button>
-    <div class="retweetNo">5</div>
-  </div>
-  <div class="section section--like">
-    <button class="tweetInteractionSectionButton">
-
-      <svg viewBox="0 0 24 24" aria-hidden="true" class="tweetInteractionSectionIcon"><g><path d="M12 21.638h-.014C9.403 21.59 1.95 14.856 1.95 8.478c0-3.064 2.525-5.754 5.403-5.754 2.29 0 3.83 1.58 4.646 2.73.814-1.148 2.354-2.73 4.645-2.73 2.88 0 5.404 2.69 5.404 5.755 0 6.376-7.454 13.11-10.037 13.157H12zM7.354 4.225c-2.08 0-3.903 1.988-3.903 4.255 0 5.74 7.034 11.596 8.55 11.658 1.518-.062 8.55-5.917 8.55-11.658 0-2.267-1.823-4.255-3.903-4.255-2.528 0-3.94 2.936-3.952 2.965-.23.562-1.156.562-1.387 0-.014-.03-1.425-2.965-3.954-2.965z"></path></g></svg>
-    </button>
-    <div class="likeNo">3</div>
-  </div>
-  <div class="section section--share">
-    <button class="tweetInteractionSectionButton">
-
-      <svg viewBox="0 0 24 24" aria-hidden="true" class="tweetInteractionSectionIcon"><g><path d="M17.53 7.47l-5-5c-.293-.293-.768-.293-1.06 0l-5 5c-.294.293-.294.768 0 1.06s.767.294 1.06 0l3.72-3.72V15c0 .414.336.75.75.75s.75-.336.75-.75V4.81l3.72 3.72c.146.147.338.22.53.22s.384-.072.53-.22c.293-.293.293-.767 0-1.06z"></path><path d="M19.708 21.944H4.292C3.028 21.944 2 20.916 2 19.652V14c0-.414.336-.75.75-.75s.75.336.75.75v5.652c0 .437.355.792.792.792h15.416c.437 0 .792-.355.792-.792V14c0-.414.336-.75.75-.75s.75.336.75.75v5.652c0 1.264-1.028 2.292-2.292 2.292z"></path></g></svg>      
-    </button>
-  </div>
-</section>
-          </section>
+          <section class="notificationTweetContent"></section>
         </div>
         <div class="tweet">
           <section class="tweetUserImage">
@@ -654,7 +610,116 @@ Lorem ipsum dolor sit amet consectetur adipisicing elit.       </section>
         </div>
       </section>
       <section class="mentionsBody">
-        
+        <div class="tweet tweet--reply">
+          <section class="tweetUserImage">
+            <div class="tweetUserImagePicture">
+            <img class="userImage" src="images/ws_3D_Abstract_Art_1680x1050.webp"/>
+            </div>
+          </section>
+          <section class="tweetContent">
+            <header>
+              <p class="headerText">
+                <span class="displayName">MicrosoftMEA</span>
+                <span class="userName">@MicrosoftMEAabsdsndsjdj</span>
+              </p>
+              <button class="tweetOptions">
+<div class="smallCircle"></div>
+<div class="smallCircle"></div>
+<div class="smallCircle"></div>
+              </button>
+
+            </header>
+            <section class="tweetContentText">
+              <p class="replySection">
+                <span class="reply">Replying to</span> <span class="usernames">@IamRonald05 @designfulltime</span>
+              </p>
+Lorem ipsum dolor sit amet consectetur adipisicing elit.       </section>
+<section class="tweetInteractionSection">
+  <div class="section section--comment">
+    <button class="tweetInteractionSectionButton">
+
+      <svg viewBox="0 0 24 24" aria-hidden="true" class="tweetInteractionSectionIcon"><g><path d="M14.046 2.242l-4.148-.01h-.002c-4.374 0-7.8 3.427-7.8 7.802 0 4.098 3.186 7.206 7.465 7.37v3.828c0 .108.044.286.12.403.142.225.384.347.632.347.138 0 .277-.038.402-.118.264-.168 6.473-4.14 8.088-5.506 1.902-1.61 3.04-3.97 3.043-6.312v-.017c-.006-4.367-3.43-7.787-7.8-7.788zm3.787 12.972c-1.134.96-4.862 3.405-6.772 4.643V16.67c0-.414-.335-.75-.75-.75h-.396c-3.66 0-6.318-2.476-6.318-5.886 0-3.534 2.768-6.302 6.3-6.302l4.147.01h.002c3.532 0 6.3 2.766 6.302 6.296-.003 1.91-.942 3.844-2.514 5.176z"></path></g></svg>
+    </button>
+    <div class="commentNo">4</div>
+  </div>
+  <div class="section section--retweet">
+    <button class="tweetInteractionSectionButton">
+
+      <svg viewBox="0 0 24 24" aria-hidden="true" class="tweetInteractionSectionIcon"><g><path d="M23.77 15.67c-.292-.293-.767-.293-1.06 0l-2.22 2.22V7.65c0-2.068-1.683-3.75-3.75-3.75h-5.85c-.414 0-.75.336-.75.75s.336.75.75.75h5.85c1.24 0 2.25 1.01 2.25 2.25v10.24l-2.22-2.22c-.293-.293-.768-.293-1.06 0s-.294.768 0 1.06l3.5 3.5c.145.147.337.22.53.22s.383-.072.53-.22l3.5-3.5c.294-.292.294-.767 0-1.06zm-10.66 3.28H7.26c-1.24 0-2.25-1.01-2.25-2.25V6.46l2.22 2.22c.148.147.34.22.532.22s.384-.073.53-.22c.293-.293.293-.768 0-1.06l-3.5-3.5c-.293-.294-.768-.294-1.06 0l-3.5 3.5c-.294.292-.294.767 0 1.06s.767.293 1.06 0l2.22-2.22V16.7c0 2.068 1.683 3.75 3.75 3.75h5.85c.414 0 .75-.336.75-.75s-.337-.75-.75-.75z"></path></g></svg>
+    </button>
+    <div class="retweetNo">5</div>
+  </div>
+  <div class="section section--like">
+    <button class="tweetInteractionSectionButton">
+
+      <svg viewBox="0 0 24 24" aria-hidden="true" class="tweetInteractionSectionIcon"><g><path d="M12 21.638h-.014C9.403 21.59 1.95 14.856 1.95 8.478c0-3.064 2.525-5.754 5.403-5.754 2.29 0 3.83 1.58 4.646 2.73.814-1.148 2.354-2.73 4.645-2.73 2.88 0 5.404 2.69 5.404 5.755 0 6.376-7.454 13.11-10.037 13.157H12zM7.354 4.225c-2.08 0-3.903 1.988-3.903 4.255 0 5.74 7.034 11.596 8.55 11.658 1.518-.062 8.55-5.917 8.55-11.658 0-2.267-1.823-4.255-3.903-4.255-2.528 0-3.94 2.936-3.952 2.965-.23.562-1.156.562-1.387 0-.014-.03-1.425-2.965-3.954-2.965z"></path></g></svg>
+    </button>
+    <div class="likeNo">3</div>
+  </div>
+  <div class="section section--share">
+    <button class="tweetInteractionSectionButton">
+
+      <svg viewBox="0 0 24 24" aria-hidden="true" class="tweetInteractionSectionIcon"><g><path d="M17.53 7.47l-5-5c-.293-.293-.768-.293-1.06 0l-5 5c-.294.293-.294.768 0 1.06s.767.294 1.06 0l3.72-3.72V15c0 .414.336.75.75.75s.75-.336.75-.75V4.81l3.72 3.72c.146.147.338.22.53.22s.384-.072.53-.22c.293-.293.293-.767 0-1.06z"></path><path d="M19.708 21.944H4.292C3.028 21.944 2 20.916 2 19.652V14c0-.414.336-.75.75-.75s.75.336.75.75v5.652c0 .437.355.792.792.792h15.416c.437 0 .792-.355.792-.792V14c0-.414.336-.75.75-.75s.75.336.75.75v5.652c0 1.264-1.028 2.292-2.292 2.292z"></path></g></svg>      
+    </button>
+  </div>
+</section>
+          </section>
+        </div>
+        <div class="tweet tweet--reply">
+          <section class="tweetUserImage">
+            <div class="tweetUserImagePicture">
+            <img class="userImage" src="images/ws_3D_Abstract_Art_1680x1050.webp">
+            </div>
+          </section>
+          <section class="tweetContent">
+            <header>
+              <p class="headerText">
+                <span class="displayName">MicrosoftMEA</span>
+                <span class="userName">@MicrosoftMEAabsdsndsjdj</span>
+              </p>
+              <button class="tweetOptions">
+<div class="smallCircle"></div>
+<div class="smallCircle"></div>
+<div class="smallCircle"></div>
+              </button>
+
+            </header>
+            <section class="tweetContentText">
+              <p class="replySection">
+                <span class="reply">Replying to</span> <span class="usernames">@IamRonald05 @designfulltime</span>
+              </p>
+Lorem ipsum dolor sit amet consectetur adipisicing elit.       </section>
+<section class="tweetInteractionSection">
+  <div class="section section--comment">
+    <button class="tweetInteractionSectionButton">
+
+      <svg viewBox="0 0 24 24" aria-hidden="true" class="tweetInteractionSectionIcon"><g><path d="M14.046 2.242l-4.148-.01h-.002c-4.374 0-7.8 3.427-7.8 7.802 0 4.098 3.186 7.206 7.465 7.37v3.828c0 .108.044.286.12.403.142.225.384.347.632.347.138 0 .277-.038.402-.118.264-.168 6.473-4.14 8.088-5.506 1.902-1.61 3.04-3.97 3.043-6.312v-.017c-.006-4.367-3.43-7.787-7.8-7.788zm3.787 12.972c-1.134.96-4.862 3.405-6.772 4.643V16.67c0-.414-.335-.75-.75-.75h-.396c-3.66 0-6.318-2.476-6.318-5.886 0-3.534 2.768-6.302 6.3-6.302l4.147.01h.002c3.532 0 6.3 2.766 6.302 6.296-.003 1.91-.942 3.844-2.514 5.176z"></path></g></svg>
+    </button>
+    <div class="commentNo">4</div>
+  </div>
+  <div class="section section--retweet">
+    <button class="tweetInteractionSectionButton">
+
+      <svg viewBox="0 0 24 24" aria-hidden="true" class="tweetInteractionSectionIcon"><g><path d="M23.77 15.67c-.292-.293-.767-.293-1.06 0l-2.22 2.22V7.65c0-2.068-1.683-3.75-3.75-3.75h-5.85c-.414 0-.75.336-.75.75s.336.75.75.75h5.85c1.24 0 2.25 1.01 2.25 2.25v10.24l-2.22-2.22c-.293-.293-.768-.293-1.06 0s-.294.768 0 1.06l3.5 3.5c.145.147.337.22.53.22s.383-.072.53-.22l3.5-3.5c.294-.292.294-.767 0-1.06zm-10.66 3.28H7.26c-1.24 0-2.25-1.01-2.25-2.25V6.46l2.22 2.22c.148.147.34.22.532.22s.384-.073.53-.22c.293-.293.293-.768 0-1.06l-3.5-3.5c-.293-.294-.768-.294-1.06 0l-3.5 3.5c-.294.292-.294.767 0 1.06s.767.293 1.06 0l2.22-2.22V16.7c0 2.068 1.683 3.75 3.75 3.75h5.85c.414 0 .75-.336.75-.75s-.337-.75-.75-.75z"></path></g></svg>
+    </button>
+    <div class="retweetNo">5</div>
+  </div>
+  <div class="section section--like">
+    <button class="tweetInteractionSectionButton">
+
+      <svg viewBox="0 0 24 24" aria-hidden="true" class="tweetInteractionSectionIcon"><g><path d="M12 21.638h-.014C9.403 21.59 1.95 14.856 1.95 8.478c0-3.064 2.525-5.754 5.403-5.754 2.29 0 3.83 1.58 4.646 2.73.814-1.148 2.354-2.73 4.645-2.73 2.88 0 5.404 2.69 5.404 5.755 0 6.376-7.454 13.11-10.037 13.157H12zM7.354 4.225c-2.08 0-3.903 1.988-3.903 4.255 0 5.74 7.034 11.596 8.55 11.658 1.518-.062 8.55-5.917 8.55-11.658 0-2.267-1.823-4.255-3.903-4.255-2.528 0-3.94 2.936-3.952 2.965-.23.562-1.156.562-1.387 0-.014-.03-1.425-2.965-3.954-2.965z"></path></g></svg>
+    </button>
+    <div class="likeNo">3</div>
+  </div>
+  <div class="section section--share">
+    <button class="tweetInteractionSectionButton">
+
+      <svg viewBox="0 0 24 24" aria-hidden="true" class="tweetInteractionSectionIcon"><g><path d="M17.53 7.47l-5-5c-.293-.293-.768-.293-1.06 0l-5 5c-.294.293-.294.768 0 1.06s.767.294 1.06 0l3.72-3.72V15c0 .414.336.75.75.75s.75-.336.75-.75V4.81l3.72 3.72c.146.147.338.22.53.22s.384-.072.53-.22c.293-.293.293-.767 0-1.06z"></path><path d="M19.708 21.944H4.292C3.028 21.944 2 20.916 2 19.652V14c0-.414.336-.75.75-.75s.75.336.75.75v5.652c0 .437.355.792.792.792h15.416c.437 0 .792-.355.792-.792V14c0-.414.336-.75.75-.75s.75.336.75.75v5.652c0 1.264-1.028 2.292-2.292 2.292z"></path></g></svg>      
+    </button>
+  </div>
+</section>
+          </section>
+        </div>
       </section>
     </section>
 
@@ -663,18 +728,142 @@ Lorem ipsum dolor sit amet consectetur adipisicing elit.       </section>
       <div class="newTweetInputContainer">
         <section>
           <div class="userSection">
-            <div class="userSectionDisplayImage">
-              <img src="images\ws_3D_Abstract_Art_1680x1050.webp"/>
+            <div class="userSectionWrapper">
+              <div class="userSectionDisplayImage">
+                <img src="images\ws_3D_Abstract_Art_1680x1050.webp"/>
+              </div>
+              <div class="userSectionDisplayText">
+                <h2 class="name">Ronald😝<svg viewBox="0 0 24 24" class="verifiedBadge"><g><path d="M22.5 12.5c0-1.58-.875-2.95-2.148-3.6.154-.435.238-.905.238-1.4 0-2.21-1.71-3.998-3.818-3.998-.47 0-.92.084-1.336.25C14.818 2.415 13.51 1.5 12 1.5s-2.816.917-3.437 2.25c-.415-.165-.866-.25-1.336-.25-2.11 0-3.818 1.79-3.818 4 0 .494.083.964.237 1.4-1.272.65-2.147 2.018-2.147 3.6 0 1.495.782 2.798 1.942 3.486-.02.17-.032.34-.032.514 0 2.21 1.708 4 3.818 4 .47 0 .92-.086 1.335-.25.62 1.334 1.926 2.25 3.437 2.25 1.512 0 2.818-.916 3.437-2.25.415.163.865.248 1.336.248 2.11 0 3.818-1.79 3.818-4 0-.174-.012-.344-.033-.513 1.158-.687 1.943-1.99 1.943-3.484zm-6.616-3.334l-4.334 6.5c-.145.217-.382.334-.625.334-.143 0-.288-.04-.416-.126l-.115-.094-2.415-2.415c-.293-.293-.293-.768 0-1.06s.768-.294 1.06 0l1.77 1.767 3.825-5.74c.23-.345.696-.436 1.04-.207.346.23.44.696.21 1.04z"></path></g></svg></h2>
+                <h2 class="username">@IamRonald05</h2>
+              </div>
             </div>
-            <div class="userSectionDisplayText">
-              <p>Display Name</p>
-              <p>Username</p>
+
+            <div class="followButtonSection">
+              <a href="https://twitter.com/Iamronald05" class="followButton">
+                Follow Me
+              </a>
             </div>
           </div>
         </section>
+        <form>
+          <input type="text" class="tweetInput" placeholder="Type Something..."/>
+          <button type="submit" class="tweetInputSubmitButton"> Tweet </button>
+        </form>
       </div>
       <div class="closeNewTweetInputContainer"></div>
-
+      <div class="followMeSection">
+        <svg viewBox="0 0 36 36" aria-hidden="true" class="followMeSVG"><g>
+          <path d="M35.508 15.41l-9.295-3.387L22.438 1.47c-.108-.302-.357-.48-.722-.495-.322.007-.604.22-.698.53l-3.293 10.71-9.132 3.805c-.285.118-.467.4-.46.708.007.308.203.58.492.686L17.92 20.8l3.775 10.552c.107.298.39.496.704.496h.016c.322-.007.604-.22.698-.53l3.293-10.712 9.132-3.803c.284-.118.466-.4.46-.708-.007-.308-.203-.58-.492-.686z" fill="#61BCF6"></path>
+          <path d="M9.57 4.715l-2.906.065-.06-2.715C6.585 1.34 5.983.763 5.256.78 4.53.796 3.955 1.4 3.97 2.125l.063 2.715-2.747.062C.56 4.92-.016 5.522 0 6.248c.017.726.62 1.302 1.346 1.285l2.747-.062.062 2.716c.017.726.62 1.302 1.345 1.286.726-.016 1.302-.62 1.286-1.345l-.062-2.715 2.905-.066c.725-.017 1.3-.62 1.285-1.346-.017-.726-.62-1.302-1.346-1.285z" fill="var(--primary-color)">
+          </path><path d="M14.205 29.69l-1.65.036-.034-1.518c-.016-.726-.618-1.302-1.344-1.286s-1.302.62-1.286 1.345l.034 1.518-1.54.035c-.726.016-1.302.62-1.286 1.345.017.726.62 1.302 1.345 1.286l1.54-.034.034 1.518c.017.726.62 1.302 1.345 1.286.726-.016 1.302-.62 1.286-1.345l-.034-1.518 1.65-.037c.726-.016 1.302-.62 1.286-1.345-.016-.727-.62-1.303-1.345-1.286z" fill="#FD9E1A"></path></g>
+        </svg>
+        <div class="FollowMeButtonContainer">
+          <a class="followMeButton" href="https://twitter.com/IamRonald05">Follow Me on Twitter</a>
+        </div> 
+      </div>
+      <div class="closeFollowMeSection "></div>
+      <div class="trendingSearchesContainer">
+        <div class="mostTrendingSearch">
+          <img src="images/WSGradPic.jpg"/>
+          <div class="mostTrendingSearchOverlay">
+            <section class="trendingSearchesText">
+              <p class="trendingSearchesTopic">WSschool · <span class="now">Now</span></p>
+              <p class="trendingSearchesHashTag">#WhiteSandsGraduation2021</p>
+              <p class="trendingWith">Trending with #SecondaryWhat?</p>
+            </section>
+          </div>
+        </div>
+        <div class="trend trendWithPic">
+          <section class="trendTextSection">
+            <p class="trendHeader">
+              <span class="smallImage">
+                <img src="C:\Users\ronal\Desktop\Projects\RedTwitter\images\ws_3D_Abstract_Art_1680x1050.webp" />
+              </span> <span class="accountName">
+                   Adora Hack
+              </span> ·
+              <span class="date">Oct 7</span>
+            </p>
+            <p class="trendBody">
+              Adora Nwodu Releases a stunning book on Cloud Engineering
+            <p>
+          </section>
+          <section class="trendImageSection">
+            <img src="images\ws_3D_Abstract_Art_1680x1050.webp"/>
+          </section>
+        </div>
+        <div class="trend trendWithPic">
+          <section class="trendTextSection">
+            <p class="trendHeader">
+              <span class="smallImage">
+                <img src="C:\Users\ronal\Desktop\Projects\RedTwitter\images\ws_3D_Abstract_Art_1680x1050.webp" />
+              </span> <span class="accountName">
+                   Adora Hack
+              </span> ·
+              <span class="date">Oct 7</span>
+            </p>
+            <p class="trendBody">
+              Adora Nwodu Releases a stunning book on Cloud Engineering
+            <p>
+          </section>
+          <section class="trendImageSection">
+            <img src="images\ws_3D_Abstract_Art_1680x1050.webp"/>
+          </section>
+        </div>
+        <div class="trend trendWithPic">
+          <section class="trendTextSection">
+            <p class="trendHeader">
+              <span class="smallImage">
+                <img src="C:\Users\ronal\Desktop\Projects\RedTwitter\images\ws_3D_Abstract_Art_1680x1050.webp" />
+              </span> <span class="accountName">
+                   Adora Hack
+              </span> ·
+              <span class="date">Oct 7</span>
+            </p>
+            <p class="trendBody">
+              Adora Nwodu Releases a stunning book on Cloud Engineering
+            <p>
+          </section>
+          <section class="trendImageSection">
+            <img src="images\ws_3D_Abstract_Art_1680x1050.webp"/>
+          </section>
+        </div>
+        <div class="trend trendWithPic">
+          <section class="trendTextSection">
+            <p class="trendHeader">
+              <span class="smallImage">
+                <img src="C:\Users\ronal\Desktop\Projects\RedTwitter\images\ws_3D_Abstract_Art_1680x1050.webp" />
+              </span> <span class="accountName">
+                   Adora Hack
+              </span> ·
+              <span class="date">Oct 7</span>
+            </p>
+            <p class="trendBody">
+              Adora Nwodu Releases a stunning book on Cloud Engineering
+            <p>
+          </section>
+          <section class="trendImageSection">
+            <img src="images\ws_3D_Abstract_Art_1680x1050.webp"/>
+          </section>
+        </div>
+        <div class="trend trendWithPic">
+          <section class="trendTextSection">
+            <p class="trendHeader">
+              <span class="smallImage">
+                <img src="C:\Users\ronal\Desktop\Projects\RedTwitter\images\ws_3D_Abstract_Art_1680x1050.webp" />
+              </span> <span class="accountName">
+                   Adora Hack
+              </span> ·
+              <span class="date">Oct 7</span>
+            </p>
+            <p class="trendBody">
+              Adora Nwodu Releases a stunning book on Cloud Engineering
+            <p>
+          </section>
+          <section class="trendImageSection">
+            <img src="images\ws_3D_Abstract_Art_1680x1050.webp"/>
+          </section>
+        </div>
+      </div>
 
     <script src="script.js"></script>
   </body>
