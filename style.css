@@ -1,4 +1,3 @@
-/*TODO: Ask the user to choose their theme color for twitter*/
 @import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;600;700;900&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Lato:wght@300;400&display=swap");
 
@@ -212,7 +211,6 @@
     fill: var(--primary-color);
   }
 
-  /* TODO: Add that blue circle that appears on the home icon when there are tweets */
   .navBarIconContainer.newTweets::before {
     content: "";
     display: block;
@@ -510,7 +508,6 @@
     display: none;
     padding: 50px 0 55px;
   }
-  /* FIXME: Change the color of the elipses in the truncated text to grey */
   .tweet {
     display: flex;
     flex-direction: row;
@@ -903,6 +900,20 @@
   .trendingSearchesContainer.lightTheme .trendBody {
     color: black;
   }
+  .trendingSectionTitle {
+    width: 100vw;
+    font-family: "Open Sans", sans-serif;
+    font-size: 20px;
+    color: white;
+    transition: color var(--theme-change-time);
+    padding-left: 15px;
+    font-weight: 700;
+    animation: show 0.3s ease-in;
+    margin: 10px 0;
+  }
+  .trendingSearchesContainer.lightTheme .trendingSectionTitle {
+    color: black;
+  }
   /* Styles for the Trend Section */
   .trend.trendWithPic {
     display: grid;
@@ -1290,7 +1301,6 @@
   .cssLoader.visible .circle {
     opacity: 1;
   }
-  /*FIXME: The tweet button's z-index is too large, It is still visible in screens other than the home screen  */
 }
 @media screen and (min-width: 375px) and (max-width: 400px) {
   .quotedTweet .headerText {
@@ -1327,7 +1337,6 @@
   }
 }
 
-/* TODO: Decide whether or not to do the design for larger devices or to ask them to move to smaller devices */
 @media screen and (min-width: 500px) {
   body {
     background: black;

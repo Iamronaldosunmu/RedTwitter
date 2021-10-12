@@ -1,7 +1,3 @@
-// TODO:After Jamb please make sure to style the Light mode(or theme) properly, it looks terrible right now.
-
-
-
 //Selecting Elements from the DOM
 const trendingSearchesContainer = document.querySelector('.trendingSearchesContainer');
 const navTwitterStarImage = document.querySelector('.navTwitterStarImage');
@@ -48,6 +44,15 @@ const plainLikeIcon = '<svg viewBox="0 0 24 24" aria-hidden="true" class="tweetI
 const homeBtnEventParameter = {target: document.querySelector('.navBarIconContainer .homeBtn')};
 const tweetOptions = document.querySelectorAll('.tweetOptions');
 const cssLoader = document.querySelector('.cssLoader');
+const navInput = document.querySelector('input.navTwitterImage.navTwitterImage--search');
+const trendContainer = document.querySelector('.trendContainer');
+const cloneOfTrendContainer = document.createElement('div');
+const trendContainerInnerHTML = trendContainer.innerHTML;
+cloneOfTrendContainer.innerHTML = trendContainerInnerHTML;
+const cloneOfMessagesContainer = document.createElement('div');
+const messagesContainerInnerHTML = messagesContainer.innerHTML;
+cloneOfMessagesContainer.innerHTML = messagesContainerInnerHTML;
+const shareButtons = document.querySelectorAll('.section--share .tweetInteractionSectionButton');
 
 // The tweet Class
 class Tweet {
@@ -63,6 +68,8 @@ class Tweet {
         const tweet = originalTweet.cloneNode(true);
         const likeButton = tweet.querySelector('.section--like .tweetInteractionSectionButton');
         likeButton.addEventListener('click', likeClicked);
+        const shareButton = tweet.querySelector('.section--share .tweetInteractionSectionButton');
+        shareButton.addEventListener('click', redirect);
         const tweetOption = tweet.querySelector('.tweetOptions');
         tweetOption.addEventListener('click', showFollowMeSection);
         const retweetButton = tweet.querySelector('.section--retweet .tweetInteractionSectionButton');
@@ -80,7 +87,16 @@ class Tweet {
 
     }
 }
-
+// The tweet objects variable
+const tweetObjects = [
+    new Tweet("This is the tweet Content", 5, 6, 7),
+    new Tweet("I once heard a story of a young man that wanted nothing but money in life", 5, 6, 7),
+    new Tweet("I necer subscribe to guys on the internet looking for the fame and clout they veber deserve", 5, 6, 7),
+    new Tweet("Burna Boy >>>> Davido", 5, 6, 7),
+    new Tweet("Overthinking no fit solve problem, make another man no come chop my sweat", 5, 6, 7),
+    new Tweet("This is the tweet Content", 5, 6, 7),
+    new Tweet("This should not be printed on the first scroll", 1, 2, 3)
+];
 
 
 // Selected Items that will be refernenced in later sections
@@ -115,11 +131,13 @@ function loaderAnimationStop() {
 }
 
 //Event Listeners
+shareButtons.forEach(shareButton => shareButton.addEventListener('click', redirect));
+navInput.addEventListener('input', filter);
 window.addEventListener('scroll', infiniteScrollFunction);
 navTwitterStarImage.addEventListener('click', showFollowMeSection);
 closeFollowMeSection.addEventListener('click', removeCloseFollowMeSection);
 closeNewTweetInputContainer.addEventListener('click', removeNewTweetInput)
-tweetButton.addEventListener('click', showNewTweetInput); //TODO: Create the function
+tweetButton.addEventListener('click', showNewTweetInput);
 toggleBtn.addEventListener('click', showAccountInfo);
 window.addEventListener('click', closeSideBar);
 bottomNavBar.addEventListener('click', toggleSelectedClass);
@@ -129,15 +147,9 @@ lightsOutContainer.addEventListener('click', selectaButton );
 allButton.addEventListener('click', selectANotificationsNavButton);
 mentionsButton.addEventListener('click', selectANotificationsNavButton);
 tweetInputSubmitButton.addEventListener('click', handleSubmit);
-for (let retweetButton of retweetButtons) {
-    retweetButton.addEventListener('click', retweetClicked);
-}
-for (let likeButton of likeButtons) {
-    likeButton.addEventListener('click', likeClicked);
-}
-for (let tweetOption of tweetOptions) {
-    tweetOption.addEventListener('click', showFollowMeSection);
-}
+retweetButtons.forEach(retweetButton => retweetButton.addEventListener('click', retweetClicked));
+likeButtons.forEach(likeButton => likeButton.addEventListener('click', likeClicked));
+tweetOptions.forEach(tweetOption => tweetOption.addEventListener('click', showFollowMeSection));
 //Event Listener Functions
 function likeClicked(e){
     let likeNo = this.nextElementSibling;
@@ -244,7 +256,18 @@ function selectaButton(e) {
         }
     }
 }
-
+function redirect() {
+    if (navigator.share) {
+        navigator.share({
+            title: document.title,
+            url: document.location.href
+          })
+    }
+    else {
+        window.location.href = 'https://twitter.com/Iamronald05';
+    }
+    
+}
 function changeBodyTo(nextDisplay) {
     if (nextDisplay == homeBtn) {
         navText.style.display = 'none';
@@ -254,6 +277,12 @@ function changeBodyTo(nextDisplay) {
         tweetsContainer.style.display = 'block';
         navTwitterImage.style.display = 'block';
         notificationsContainer.style.display = 'none';
+        if (trendContainer.innerHTML.trim() == '') {
+            trendContainer.innerHTML = trendContainerInnerHTML;
+        }
+        if (messagesContainer.innerHTML.trim() == '') {
+            messagesContainer.innerHTML = messagesContainerInnerHTML;
+        }
     }
     else if (nextDisplay == searchBtn) {
         tweetsContainer.style.display = 'none';
@@ -265,6 +294,9 @@ function changeBodyTo(nextDisplay) {
         navSearch.setAttribute('placeholder', 'Search RedTwitter');
         notificationsContainer.style.display = 'none';
         trendingSearchesContainer.style.display = 'block';
+        if (messagesContainer.innerHTML.trim() == '') {
+            messagesContainer.innerHTML = messagesContainerInnerHTML;
+        }
 
     }
     else if (nextDisplay == messageBtn) {
@@ -274,10 +306,12 @@ function changeBodyTo(nextDisplay) {
         navSearch.value="";
         navSearch.style.display = 'block';
         messagesContainer.style.display = 'block';
-       navSearch.setAttribute('placeholder', 'Search for people and groups');
-       notificationsContainer.style.display = 'none';
+        navSearch.setAttribute('placeholder', 'Search for people and groups');
+        notificationsContainer.style.display = 'none';
         trendingSearchesContainer.style.display = 'none';
-
+        if (trendContainer.innerHTML.trim() == '') {
+            trendContainer.innerHTML = trendContainerInnerHTML;
+        }
     }
     else if (nextDisplay == notificationBtn) {
         navSearch.style.display = 'none';
@@ -285,9 +319,16 @@ function changeBodyTo(nextDisplay) {
         navTwitterImage.style.display = 'none';
         tweetsContainer.style.display = 'none';
         navText.style.display = 'block';
-       notificationsContainer.style.display = 'block';
-       trendingSearchesContainer.style.display = 'none';
+        notificationsContainer.style.display = 'block';
+        trendingSearchesContainer.style.display = 'none';
+        if (trendContainer.innerHTML.trim() == '') {
+            trendContainer.innerHTML = trendContainerInnerHTML;
+        }
+        if (messagesContainer.innerHTML.trim() == '') {
+            messagesContainer.innerHTML = messagesContainerInnerHTML;
+        }
     }
+
 }
 
 function selectANotificationsNavButton(e) {
@@ -367,18 +408,61 @@ function handleSubmit(e) {
     changeBodyTo(homeBtn);
     toggleSelectedClass(homeBtnEventParameter);
     window.scrollTo(0, 0);
-    
+}
+function reRender (container, searchValue) {
+    cloneOfTrendContainer.innerHTML = trendContainerInnerHTML;
+    cloneOfMessagesContainer.innerHTML = messagesContainerInnerHTML;
+    if (container == trendContainer) {
+        let trends = cloneOfTrendContainer.querySelectorAll('.trend');
+        filteredTrends = [...trends].filter( (trend) => {
+            let accountName = trend.querySelector('.trendHeader .accountName').innerText.trim().toLowerCase();
+            let trendBody = trend.querySelector('.trendBody').innerText.trim().toLowerCase();
+            arrayToSearch = [accountName, trendBody];
+            searchFunction = (element) => element.includes(searchValue.toLowerCase()); 
+            return arrayToSearch.some(searchFunction);
+        });
+        let filteredTrendsContainer = document.createElement('div');
+        filteredTrends.forEach(
+            trend => filteredTrendsContainer.appendChild(trend)
+        );
+        if (filteredTrendsContainer.innerHTML == trendContainer.innerHTML) {
+            return false;
+        }
+        else if (searchValue === '')
+        trendContainer.innerHTML = cloneOfTrendContainer.innerHTML;
+        else trendContainer.innerHTML = filteredTrendsContainer.innerHTML;
+    }
+    if (container == messagesContainer) {
+        let chats = cloneOfMessagesContainer.querySelectorAll('.chat');
+        filteredChats = [...chats].filter( (chat) => {
+            let displayName = chat.querySelector('.chatText .displayName').innerText.trim().toLowerCase();
+            let chatText = chat.querySelector('.chatText .lastText').innerText.trim().toLowerCase();
+            arrayToSearch = [displayName, chatText];
+            searchFunction = (element) => element.includes(searchValue.toLowerCase()); 
+            return arrayToSearch.some(searchFunction);
+        });
+        let filteredMessagesContainer = document.createElement('div');
+        filteredChats.forEach(
+            chat => filteredMessagesContainer.appendChild(chat)
+        );
+        if (filteredMessagesContainer.innerHTML == messagesContainer.innerHTML) {
+            return false;
+        }
+        else if (searchValue === '')
+        messagesContainer.innerHTML = cloneOfMessagesContainer.innerHTML;
+        else messagesContainer.innerHTML = filteredMessagesContainer.innerHTML;
+    }
 
 }
-const tweetObjects = [
-    new Tweet("This is the tweet Content", 5, 6, 7),
-    new Tweet("I once heard a story of a young man that wanted nothing but money in life", 5, 6, 7),
-    new Tweet("I necer subscribe to guys on the internet looking for the fame and clout they veber deserve", 5, 6, 7),
-    new Tweet("Burna Boy >>>> Davido", 5, 6, 7),
-    new Tweet("Overthinking no fit solve problem, make another man no come chop my sweat", 5, 6, 7),
-    new Tweet("This is the tweet Content", 5, 6, 7),
-    new Tweet("This should not be printed on the first scroll", 1, 2, 3)
-];
+function filter(e) {
+    const {value} = navInput;
+    if (selectedBottomNavButton == searchBtn){
+        reRender(trendContainer, value);
+    }
+    else if (selectedBottomNavButton == messageBtn){
+        reRender(messagesContainer, value);
+    }
+}
 function showLoading () {
     cssLoader.classList.add('visible');
     setTimeout(() => {
@@ -386,7 +470,7 @@ function showLoading () {
     setTimeout(() => {
         fetchNewTweets(tweetObjects);
     }, 300);
-    }, 1200);
+    }, 2200);
 }
 
 function fetchNewTweets(arrayOfTweetObjects) {
@@ -409,25 +493,17 @@ function fetchNewTweets(arrayOfTweetObjects) {
         
     }
 }
-// TODO: Properly imlement the fetch new tweets function by giving it an array of elements to take in and then remove those elements from the original array untill it finally finishes, when there are no new tweets to add, it returns tweets of lorem ipmsum dolor;
 
 function infiniteScrollFunction ( ) {
-    const {scrollTop, scrollHeight, clientHeight} = document.documentElement;
+    if (selectedBottomNavButton == homeBtn){const {scrollTop, scrollHeight, clientHeight} = document.documentElement;
     if (scrollTop + clientHeight >= scrollHeight - 3) {
         showLoading();
-    }
+    }}
 }
 
-// TODO: Style the tweet input container and handle the event to make it show when the tweetButton is clicked.
 
-
-//TODO: Implement Light mode for the follow me section pop up . DONE .
-//TODO: Note that the loop for the tweet option buttons may be slowing down the code . DONE .
-//TODO: Make the options button on all the tweet to open the follow me section . DONE .
-//TODO: Style the tweets that will appear in the notifications container . DONE .
-//TODO: Implement Infinite Scroll in the tweets Container
-//TODO: Implement Filter on the trending Searches and the current messages whenever something is typed into the input field
 //TODO: Try to ensure that the layout looks good on all devices
 //TODO: Don't forget the layout problem on bigger screens
-//TODO: Make the share button in the tweet interaction section container to link the user to another page
 //TODO: Use the filled svg like button instead of interchanging between the icons, it makes it harder to animate, instead, used the filled svg and animate the stroke and fill properties
+//TODO: Refactor the code e.g Sort the variables alphabetically
+//TODO: Add dates for the chats
