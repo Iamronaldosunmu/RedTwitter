@@ -316,6 +316,7 @@ tweetInputSubmitButton.addEventListener('click', handleSubmit);
 tweetOptions.forEach(tweetOption => tweetOption.addEventListener('click', showFollowMeSection));
 window.addEventListener('click', closeSideBar);
 window.addEventListener('scroll', infiniteScrollFunction);
+document.body.addEventListener('touchmove', infiniteScrollFunction); //Scroll event listener for mobile devices
 //Event Listener Functions
 function likeClicked(e){
     let likeNo = this.nextElementSibling;
