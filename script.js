@@ -237,17 +237,24 @@ class TweetWithQuotedTweet extends Tweet{
 }
 // The tweet objects variable
 const tweetObjects = [
-    new TweetWithPicture("Ronald😝", "@IamRonald05", "This is the tweet Content", 5, 6, 7, 'images/WSGradPic.jpg', 'images/WSGradPic.jpg'),
-    new Tweet("Ezra 'God' Olubi", "@0x", "I can't believe there's a twitter space discussing being a fraudster vs working in tech. How did we get here?", 34, 331, 728, 'images/EzraOlubi.jpg'),
-    new Tweet("Ronald😝", "@IamRonald05", "I necer subscribe to guys on the internet looking for the fame and clout they veber deserve", 5, 6, 7, 'images/WSGradPic.jpg'), 
-    new Tweet("Ronald😝", "@IamRonald05", "Burna Boy >>>> Davido", 5, 6, 7, 'images/WSGradPic.jpg'),
-    new Tweet("Ronald😝", "@IamRonald05", "Overthinking no fit solve problem, make another man no come chop my sweat", 5, 6, 7, 'images/WSGradPic.jpg'),
-    new Tweet("Ronald😝", "@IamRonald05", "This is the tweet Content", 5, 6, 7, 'images/WSGradPic.jpg'),
-    new Tweet("Ronald😝", "@IamRonald05", "This should not be printed on the first scroll", 1, 2, 3, 'images/WSGradPic.jpg'),
-    new TweetWithLink("Adora✨", "@AdoraNwodu", "Thank you all for supporting my book 'Cloud Engineering for Beginners' \n \n  Our 11 day old book is ranking as the best selling computer science beginners book out of Africa today 🚀😭 \n \n Keep supporting, we are changing lives💕 ", 2, 29, 133, 'images/AdoraNwodu.jpg', 'images/cloudEngineeringForBeginners.jpeg', 'adorahack.selar.co', 'Pre Order Cloud Engineering for beginners by Adora Nwodu on Selar.co'),
-    new TweetWithQuotedTweet("ZARA(isaaczara.near)", "@isaaczara_", "Y'all comparing tech and juju😅? \n We all know how it will end. \n Lmao😂", 1, 1, 2, 'images/ZaraDesign.jpg', new Tweet("Polysaccharide Patriach", "@bigbrutha_", "1. I think we overrate how much yahoo money is \n 2. I think we underrate how much tech money is", 5, 6, 7, 'images/PolysacharidePatriach.jpg') ),
-    new TweetWithLink("TechCrunch", "@TechCrunch", "Eden Life raises $1.4M seed to provide home services to busy Africans", 87, 42, 175, 'images/techCrunch.png', 'images/edenlife.jpeg', 'techcrunch.com', 'Pre Order Cloud Engineering for beginners by Adora Nwodu on Selar.co'),
-    new TweetWithLink("DEV Community", "@ThePracticalDev", "1. filter \n 2. map \n 3. find \n 4. forEach \n 5. some \n 6. every \n 7. reduce", 1, 17, 71, 'images/devImage.jpg', 'images/devarraymethods.jpeg', 'dev.to/mcube25/7-javascript-array-methods-you-should-know-7mf', 'Arrays are one of the most common things a programmer uses or is likely to come across in a project...')
+    new Tweet("RonaldðŸ˜", "@IamRonald05", "Stop acting surprised when good things happen to you... \n You're a good person and you deserve it.", 5, 6, 7, 'images/ws_3D_Abstract_Art_1680x1050.webp'),
+   new TweetWithPicture("RonaldðŸ˜", "@IamRonald05", "Castle and Castle is one of the best Nigerian series on Netflix right now", 5, 6, 7, 'images/ws_3D_Abstract_Art_1680x1050.webp', 'images/castleandcastle.jpg'),
+   new Tweet("Ezra 'God' Olubi", "@0x", "I can't believe there's a twitter space discussing being a fraudster vs working in tech. How did we get here?", 34, 331, 728, 'images/EzraOlubi.jpg'),
+   new Tweet("kofo", "@yoruba_dev", "Haven't taken a selfie in days fam", 9, 15, 30, 'images/kofodev.jpg'),
+   new Tweet("Adoraâœ¨", "@AdoraNwodu", "The new Microsoft building in Ikoy is so beautiful. Took a tour today ðŸ˜ðŸ¥° ", 5, 6, 7, 'images/AdoraNwodu.jpg'),
+   new Tweet("RonaldðŸ˜", "@IamRonald05", "You are not dumb. Coding takes practice. And after paractice, it still doesn't work.", 5, 6, 7, 'images/ws_3D_Abstract_Art_1680x1050.webp'),
+   new Tweet("Polysaccharide Patriach", "@bigbrutha_", "Chike's 'out of love' sounded this good since?", 1, 1, 1, 'images/PolysacharidePatriach.jpg'),
+   new Tweet("JasonNjoku", "@JasonNjoku", "Its amazing that raising $1m+ for <20-person startups in Nigeria isn't really a big deal in tech today. \n What at time to be in tech. \n Glories upon glories Flag of NigeriaRaised fist", 5, 6, 7, 'images/jasonNjoku.jpg'),
+   new Tweet("kofo", "@yoruba_dev", "Ladies will 'I'm a foodie' you to death, only to barely finish one plate of pasta at Ikeja restaurants", 9, 15, 30, 'images/kofodev.jpg'),
+   new Tweet("Atarah, the Figmama", "@Aderinsola_O", "Do I have to start getting used to people advertising under my tweets? ðŸ’€ðŸ’€ðŸ’€", 13, 2, 10, 'images/atara.jpg'),
+   new Tweet("RonaldðŸ˜", "@IamRonald05", "Squid game but for boiling egg, if the egg no boil well or skin peels while removing shell. \n You're dead", 5, 6, 7, 'images/ws_3D_Abstract_Art_1680x1050.webp'),
+   new TweetWithLink("Adoraâœ¨", "@AdoraNwodu", "Thank you all for supporting my book 'Cloud Engineering for Beginners' \n \n  Our 11 day old book is ranking as the best selling computer science beginners book out of Africa today ðŸš€ðŸ˜­ \n \n Keep supporting, we are changing livesðŸ’• ", 2, 29, 133, 'images/AdoraNwodu.jpg', 'images/cloudEngineeringForBeginners.jpeg', 'adorahack.selar.co', 'Pre Order Cloud Engineering for beginners by Adora Nwodu on Selar.co'),
+   new TweetWithQuotedTweet("ZARA(isaaczara.near)", "@isaaczara_", "Y'all comparing tech and jujuðŸ˜…? \n We all know how it will end. \n LmaoðŸ˜‚", 1, 1, 2, 'images/ZaraDesign.jpg', new Tweet("Polysaccharide Patriach", "@bigbrutha_", "1. I think we overrate how much yahoo money is \n 2. I think we underrate how much tech money is", 5, 6, 7, 'images/PolysacharidePatriach.jpg') ),
+   new TweetWithQuotedTweet("RonaldðŸ˜", "@IamRonald05", "There seems to be a disconnect", 1, 1, 2, 'images/ws_3D_Abstract_Art_1680x1050.webp', new Tweet("Someone was here", "@bigbrutha_", "Has anyone figured out a way to say 'y'all sound crazy' in a professional setting?", 5, 6, 7, 'images/luluProfilePic.jpg') ),
+   new Tweet("RonaldðŸ˜", "@IamRonald05", "Unpopular opinion: Money Heist is the best series on Netflix.", 5, 6, 7, 'images/ws_3D_Abstract_Art_1680x1050.webp'),
+   new TweetWithLink("TechCrunch", "@TechCrunch", "Eden Life raises $1.4M seed to provide home services to busy Africans", 87, 42, 175, 'images/techCrunch.png', 'images/edenlife.jpeg', 'techcrunch.com', 'Pre Order Cloud Engineering for beginners by Adora Nwodu on Selar.co'),
+   new TweetWithLink("DEV Community", "@ThePracticalDev", "1. filter \n 2. map \n 3. find \n 4. forEach \n 5. some \n 6. every \n 7. Reduce", 1, 17, 71, 'images/devImage.jpg', 'images/devarraymethods.jpeg', 'dev.to/mcube25/7-javascript-array-methods-you-should-know-7mf', 'Arrays are one of the most common things a programmer uses or is likely to come across in a project...'),
+   new Tweet("RonaldðŸ˜", "@IamRonald05", "Learn from those who are ahead of you. \n \n Teach those who are behind you.", 5, 6, 7, 'images/ws_3D_Abstract_Art_1680x1050.webp'),
 ];
 
 
@@ -636,7 +643,7 @@ function fetchNewTweets(arrayOfTweetObjects) {
     else {
         for (let i = 0; i < count; i++) {
 
-            const tweet = new Tweet("Ronald😝", "@IamRonald05", "All the curated tweets have been exhausted", 12, 32, 4, 'images/WSGradPic.jpg');
+            const tweet = new Tweet("Ronald😝", "@IamRonald05", "All the tweets I prepared for this project have been exhausted, I have set up infinite scroll so more tweets will appear if you keep scrolling down. Kindly scroll up please.", 12, 32, 4, 'images/WSGradPic.jpg');
             tweetsContainer.insertBefore(tweet.returnTweetElement(), cssLoader.parentElement);
         }
         
@@ -654,3 +661,4 @@ function infiniteScrollFunction ( ) {
 //TODO: Try to ensure that the layout looks good on all devices
 //TODO: Don't forget the layout problem on bigger screens
 //TODO: Refactor the code e.g Sort the variables alphabetically
+//TODO: Don't forget to put the actual link of the red twitter page for the sharing option
