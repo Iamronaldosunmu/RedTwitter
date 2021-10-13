@@ -11,7 +11,7 @@
   --twitter-like-color: rgb(249, 24, 128);
 }
 /* Media Query for Phones (Small Devices) */
-@media screen and (max-width: 499px) {
+@media screen and (max-width: 700px) {
   body {
     margin: 0;
     padding: 0;
@@ -743,6 +743,9 @@
   .url {
     color: var(--dark-grey);
     margin-bottom: 5px;
+    width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
   .linkPreview {
     color: white;
@@ -754,9 +757,9 @@
   .linkText {
     width: 100%;
     padding: 10px;
-    border-left: 0.6px solid rgb(12 12 13);
-    border-right: 0.6px solid rgb(12 12 13);
-    border-bottom: 0.6px solid rgb(12 12 13);
+    border-left: 2px solid rgb(47 47 51);
+    border-right: 2px solid rgb(47 47 51);
+    border-bottom: 2px solid rgb(47 47 51);
     border-top: 0;
     border-bottom-right-radius: 15px;
     border-bottom-left-radius: 15px;
@@ -764,14 +767,14 @@
     bottom: 4px;
   }
   .tweetsContainer.lightTheme .linkText {
-    border-left: 0.6px solid rgb(186 186 199);
-    border-right: 0.6px solid rgb(186 186 199);
-    border-bottom: 0.6px solid rgb(186 186 199);
+    border-left: 2px solid rgb(186 186 199);
+    border-right: 2px solid rgb(186 186 199);
+    border-bottom: 2px solid rgb(186 186 199);
   }
 
   .quotedTweet {
     padding: 10px;
-    border: 1px solid rgb(12 12 13);
+    border: 1px solid rgb(47 47 51);
     width: calc(100%-25px);
     border-radius: 15px;
     margin-top: 15px;
@@ -788,7 +791,7 @@
     margin-right: 8px;
   }
   .quotedTweet .headerText {
-    width: 18ch;
+    width: 100%;
     text-align: left;
     display: inline-block;
   }
@@ -1337,7 +1340,7 @@
   }
 }
 
-@media screen and (min-width: 500px) {
+@media screen and (min-width: 700px) {
   body {
     background: black;
   }
@@ -1348,7 +1351,15 @@
   .accountInfo,
   .tweetsContainer,
   .tweetUserImagePicture,
-  .tweetMediaImage {
+  .tweetMediaImage,
+  .closeFollowMeSection,
+  .trendingSearchesContainer,
+  .followMeSection,
+  .messagesContainer,
+  .closeNewTweetInputContainer,
+  .newTweetInputContainer,
+  .tweetsContainer,
+  .notificationsContainer {
     display: none;
   }
 
@@ -1373,17 +1384,11 @@
 }
 
 /* Media Query for the bigger screens (To display change to smaller device message) */
-@media screen and (min-width: 500px) and (max-width: 800px) {
-  body {
-    font-family: "Open Sans", sans-serif;
-    overflow: hidden;
-  }
+@media screen and (min-width: 700px) {
   .loaderAnimationContainerBigScreens {
     flex-direction: column;
   }
-  .loaderAnimationContainerBigScreens .bigScreenImage {
-    width: 400px;
-  }
+
   .loaderAnimationContainerBigScreens .textContainer h1 {
     font-size: 45px;
     text-align: center;
@@ -1394,33 +1399,41 @@
   }
 }
 
-@media screen and (min-width: 800px) {
+@media screen and (min-width: 700px) {
   body {
     font-family: "Open Sans", sans-serif;
     overflow: hidden;
   }
-  .loaderAnimationContainerBigScreens {
+  /* .loaderAnimationContainerBigScreens {
     flex-direction: row;
-  }
+  } */
   .loaderAnimationContainerBigScreens .bigScreenImage {
-    width: 50%;
+    height: 50vh;
     margin-left: 30px;
-    max-width: 600px;
+    max-height: 1000px;
+  }
+  .loaderAnimationContainerBigScreens .textContainer h2 {
+    font-size: 23px;
+    max-width: 650px;
+    margin-top: 0;
+    text-align: center;
+    margin-bottom: 0;
   }
   .loaderAnimationContainerBigScreens .textContainer h1 {
-    font-size: 40px;
-    text-align: left;
-    margin-right: 30px;
-    max-width: 650px;
-  }
-  .loaderAnimationContainerBigScreens .textContainer h1::before {
-    content: "Hey there,";
     display: block;
-    font-size: 80px;
+    font-size: 30px;
     margin-bottom: 20px;
+    margin-bottom: 0;
   }
-  .loaderAnimationContainerBigScreens .textContainer {
-    margin-bottom: 200px;
+  .loaderAnimationContainerBigScreens .textContainer h3 {
+    text-align: center;
+    margin-top: 0px;
+    font-size: 18px;
+  }
+
+  /* TODO: Use height instead of width since height is what will be more relevant */
+  .contentContainer {
+    text-align: center;
   }
 }
 
