@@ -262,7 +262,7 @@ const tweetObjects = [
 let selectedNotifiactionsNavButton = allButton;
 let selectedTheme = lightingOptionButtonOn;
 let selectedBottomNavButton = homeBtn;
-setTimeout(loaderAnimationStop, 3500);
+setTimeout(loaderAnimationStop, 7500);
 
 const arrayOfThingsToChangeInTheme = [body, topNavBar, bottomNavBar, accountInfo, lightsOutContainer, lightsOutPopUp, tweetsContainer, notificationsBody, messagesContainer, trendingSearchesContainer, followMeSection];
 
@@ -643,7 +643,7 @@ function fetchNewTweets(arrayOfTweetObjects) {
     else {
         for (let i = 0; i < count; i++) {
 
-            const tweet = new Tweet("Ronald😝", "@IamRonald05", "All the tweets I prepared for this project have been exhausted, I have set up infinite scroll so more tweets will appear if you keep scrolling down. Kindly scroll up please.", 12, 32, 4, 'images/WSGradPic.jpg');
+            const tweet = new Tweet("Ronald😝", "@IamRonald05", "All the tweets I prepared for this project have been exhausted, I have set up infinite scroll so more tweets will appear if you keep scrolling down. Kindly scroll up please.", 12, 32, 4, 'images/ws_3D_Abstract_Art_1680x1050.webp');
             tweetsContainer.insertBefore(tweet.returnTweetElement(), cssLoader.parentElement);
         }
         
