@@ -660,7 +660,7 @@ function fetchNewTweets(arrayOfTweetObjects) {
 
 function infiniteScrollFunction ( ) {
     if (selectedBottomNavButton == homeBtn){const {scrollTop, scrollHeight, clientHeight} = document.documentElement;
-    if (scrollTop + clientHeight >= scrollHeight - 3) {
+    if (scrollTop + clientHeight >= scrollHeight - 100) {
         showLoading();
     }}
 }
