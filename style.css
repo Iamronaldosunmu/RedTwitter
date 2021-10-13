@@ -1,0 +1,1468 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;600;700;900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Lato:wght@300;400&display=swap");
+
+* {
+  box-sizing: border-box;
+}
+:root {
+  --primary-color: #ff5349;
+  --dark-grey: rgb(110 118 125);
+  --theme-change-time: 0.5s;
+  --twitter-like-color: rgb(249, 24, 128);
+}
+/* Media Query for Phones (Small Devices) */
+@media screen and (max-width: 700px) {
+  body {
+    margin: 0;
+    padding: 0;
+    background-color: black;
+    min-height: 100vh;
+    transition: background-color var(--theme-change-time),
+      color var(--theme-change-time);
+  }
+  body.lightTheme {
+    background-color: white;
+  }
+
+  /* Section for the loader animation */
+  .loaderAnimationContainerBigScreens {
+    display: none;
+  }
+  .loaderAnimationContainer {
+    position: absolute;
+    background: black;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    display: flex;
+
+    color: var(--primary-color);
+    font-size: 8px;
+    align-items: center;
+    justify-content: center;
+    opacity: 1;
+    transition: opacity 0.8s;
+  }
+
+  .loaderAnimationContainer.hidden {
+    opacity: 0;
+  }
+
+  .loaderAnimationSvg {
+    width: 70px;
+    height: 64px;
+    animation: flicker 1s linear infinite;
+  }
+
+  /* Section for the navigation section of the app */
+
+  /* Tweet Button */
+  .tweetButton {
+    width: 65px;
+    height: 65px;
+    position: fixed;
+    bottom: 70px;
+    right: 4vw;
+    border-radius: 60%;
+    background-color: var(--primary-color);
+    border: 0;
+    box-shadow: 0px 0px 7px 2px rgba(255, 255, 255, 0.2);
+    display: none;
+    animation: show 0.3s ease-in 1;
+    transition: background-color 0.2s;
+    z-index: 1;
+  }
+  .tweetButton:active {
+    background-color: #cc423a;
+  }
+  .tweetButtonImage {
+    width: 23px;
+    height: 23px;
+    fill: white;
+  }
+  /* Top Navigation Bar */
+  .topNavBar {
+    position: fixed;
+    display: none;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    top: 0;
+    height: 50px;
+    width: 100%;
+    background-color: black;
+    box-shadow: 0px 0.6px rgba(255, 255, 255, 0.1);
+    transition: background-color var(--theme-change-time),
+      color var(--theme-change-time);
+    z-index: 1;
+  }
+  .topNavBar.lightTheme {
+    background-color: white;
+    box-shadow: 0px 0.6px rgba(0, 0, 0, 0.1);
+  }
+  .topNavBar.lightTheme .navTwitterImage--text {
+    color: var(--dark-grey);
+  }
+  .toggle {
+    width: 40px;
+    height: 40px;
+    text-align: center;
+    border: 0;
+    top: 15px;
+    left: 15px;
+    padding: 0;
+    background: transparent;
+    transform: translate(5px, -5px);
+    animation: show 0.3s ease-in 1;
+  }
+  .navTwitterImage {
+    width: 40px;
+    height: 40px;
+    transform: translateX(5px);
+    animation: show 0.3s ease-in 1;
+  }
+  .navTwitterStarImage {
+    width: 30px;
+    height: 30px;
+    stroke: var(--primary-color);
+    stroke-width: 1px;
+    fill: var(--primary-color);
+    transform: translateX(-10px);
+    animation: show 0.3s ease-in 1;
+  }
+  .toggle .slide {
+    background: var(--primary-color);
+    width: 25px;
+    height: 4.5px;
+    z-index: 2;
+    border: 0;
+    display: block;
+    margin: 4.5px auto;
+    border-radius: 2.5px;
+    max-width: 25px;
+    transition: all 0.4s;
+  }
+
+  /* Bottom Navigation Bar */
+
+  .bottomNavBar {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background: black;
+    height: 55px;
+    display: none;
+    align-items: center;
+    justify-content: space-around;
+    box-shadow: 0px -0.6px rgba(255, 255, 255, 0.1);
+    transition: background-color var(--theme-change-time),
+      color var(--theme-change-time);
+    z-index: 1;
+  }
+  .bottomNavBar.lightTheme {
+    background-color: white;
+    box-shadow: 0px -0.6px rgba(0, 0, 0, 0.1);
+  }
+
+  .navBarIconContainer.selected .navBarIcon.normal {
+    display: none;
+  }
+  .navBarIconContainer.selected .navBarIcon.selected {
+    display: block;
+  }
+  .navBarIconContainer.normal .navBarIcon.selected {
+    display: none;
+  }
+  .navBarIconContainer.normal .navBarIcon.normal {
+    display: block;
+  }
+  .navBarIcon {
+    width: 28px;
+    height: 28px;
+    fill: darkgrey;
+    animation: show 0.25s ease-in 1;
+    transition: fill 0.3s ease-in;
+  }
+  .navBarIcon.selected {
+    fill: var(--primary-color);
+  }
+  .navBarIcon.selected.searchBtn {
+    stroke: var(--primary-color);
+    stroke-width: 1.5px;
+  }
+
+  .navBarIconContainer.newTweets {
+    position: relative;
+  }
+  .navBarIconContainer {
+    background-color: transparent;
+    padding: 7px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s ease-in;
+  }
+  .navBarIconContainer:not(.selected):hover {
+    background-color: rgba(255, 83, 73, 0.3);
+  }
+  .navBarIconContainer:hover .navBarIcon {
+    fill: var(--primary-color);
+  }
+
+  .navBarIconContainer.newTweets::before {
+    content: "";
+    display: block;
+    width: 6.5px;
+    height: 6.5px;
+    position: absolute;
+    top: 4.5px;
+    right: 6.5px;
+    background: var(--primary-color);
+    border-radius: 50%;
+    border: 0;
+    animation: show 0.5s ease-in 1;
+  }
+
+  /* Account Information Section */
+  .accountInfo {
+    position: fixed;
+    left: -73vw;
+    width: 73vw;
+    height: 100vh;
+    background-color: black;
+    opacity: 0;
+    transform: translateX(0);
+    font-family: Arial, sans-serif;
+    transition: transform 0.4s, opacity 0.4s,
+      background-color var(--theme-change-time), color var(--theme-change-time);
+    z-index: 3;
+  }
+  .accountInfo.lightTheme {
+    background-color: white;
+  }
+
+  .accountInfo.showing {
+    transform: translateX(100%);
+    opacity: 1;
+  }
+  .userImage {
+    width: 63px;
+    height: 63px;
+    object-fit: cover;
+    background: white;
+    border-radius: 50%;
+    margin-bottom: 14px;
+  }
+  .verifiedBadge {
+    display: inline-block;
+    height: 24px;
+    width: 24px;
+    fill: white;
+    position: relative;
+    top: 5px;
+  }
+  .accountInfo h2 {
+    margin: 0;
+  }
+  .name {
+    font-size: 18px;
+    font-weight: 700;
+    color: white;
+    margin-bottom: 4px;
+    transition: color var(--theme-change-time);
+  }
+  .accountInfo.lightTheme .relativeContainer .userProfile .name {
+    color: black;
+  }
+  .username {
+    font-size: 15px;
+    font-weight: 400;
+    color: var(--dark-grey);
+  }
+  .userNumbers {
+    color: white;
+    margin-top: 20px;
+    padding: 0 20px 20px;
+    box-shadow: -0.6px 0.6px rgba(255, 255, 255, 0.1);
+    width: 100%;
+    transition: color var(--theme-change-time);
+  }
+  .accountInfo.lightTheme .relativeContainer .userNumbers {
+    color: black;
+    box-shadow: -0.6px 0.6px rgba(0, 0, 0, 0.4);
+  }
+  .userNumbers span {
+    display: inline-block;
+  }
+  .number {
+    font-weight: 700;
+  }
+  .userNumberText {
+    color: var(--dark-grey);
+    margin-left: 4px;
+    font-size: 14px;
+  }
+  .following {
+    margin-right: 15px;
+  }
+  .userProfile {
+    padding: 20px 20px 0;
+  }
+  .listItem {
+    padding: 20px;
+    color: white;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    transition: color var(--theme-change-time);
+  }
+  .accountInfo.lightTheme .relativeContainer .listItem {
+    color: black;
+  }
+  .listItemSvg {
+    fill: darkgrey;
+    width: 25px;
+    height: 25px;
+    margin-right: 15px;
+  }
+  /* Section to toggle the lighting theme */
+  .relativeContainer {
+    position: relative;
+    width: 100%;
+    height: 100%;
+  }
+  .lightingSection {
+    background: transparent;
+    height: 50px;
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    padding: 9px 0 9px 20px;
+    box-shadow: -0.6px -0.3px rgba(255, 255, 255, 0.1);
+    z-index: 1;
+  }
+  .accountInfo.lightTheme .relativeContainer .lightingSection {
+    box-shadow: -0.6px -0.2px rgba(0, 0, 0, 0.4);
+  }
+  .lightingIcon {
+    width: 25px;
+    height: 25px;
+    fill: var(--dark-grey);
+  }
+  .lightingButton {
+    background: transparent;
+    border: 0;
+    padding: 0;
+    margin: 0;
+  }
+  .lightingButton:focus {
+    outline: 0;
+  }
+  /* Blurring Section to close the Account Info section */
+  .closeAccountInfo {
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    right: -100vw;
+    opacity: 0;
+    transform: translateX(0);
+    transition: opacity 0.4s;
+    z-index: 3;
+  }
+
+  .closeAccountInfo.visible {
+    background: rgba(0, 0, 0, 0.75);
+    transform: translateX(-100%);
+    opacity: 1;
+  }
+
+  /* Defining the styles for the lights out Popup */
+  .lightsOutPopUp {
+    display: none;
+    position: fixed;
+    bottom: -65vh;
+    height: 65vh;
+    width: 100vw;
+    background-color: darkgrey;
+    border-top-left-radius: 28px;
+    border-top-right-radius: 28px;
+    transition: transform 0.3s, background-color var(--theme-change-time),
+      color var(--theme-change-time);
+    overflow: hidden;
+    border: 0;
+    background-color: rgba(8, 8, 8);
+
+    z-index: 2;
+  }
+  .closeLightsOutPopUp {
+    opacity: 0;
+    display: none;
+    position: fixed;
+    top: -40vh;
+    height: 40vh;
+    width: 100vw;
+    background-color: rgba(0, 0, 0, 0.75);
+    transition: opacity 0.3s;
+    z-index: 1;
+  }
+  .lightsOutPopUp.visible {
+    transform: translateY(-100%);
+  }
+  .lightsOutPopUp.lightTheme {
+    background-color: white;
+  }
+  .closeLightsOutPopUp.visible {
+    opacity: 1;
+    transform: translateY(100%);
+  }
+  .lightsOutPopUpContainer {
+    position: relative;
+    width: 100%;
+    height: calc(100% + 28px);
+    background-color: rgba(8, 8, 8);
+    transform: translateY(-20px);
+    transition: background-color var(--theme-change-time);
+  }
+  .lightsOutPopUpContainer.lightTheme {
+    background-color: white;
+  }
+  .lightsOutPopUpContainer::after {
+    position: absolute;
+    content: "";
+    display: block;
+    width: 45px;
+    height: 8px;
+    background: rgba(123, 123, 123, 0.3);
+    border-radius: 5px;
+    top: 10px;
+    left: calc(50% - 22.5px);
+  }
+  .lightsOutPopUpContainer h2 {
+    width: 100%;
+    font-size: 30px;
+    text-align: center;
+    padding-top: 25px;
+    color: white;
+    font-family: "Lato", sans-serif;
+    transition: color var(--theme-change-time);
+  }
+  .lightsOutPopUpContainer.lightTheme h2 {
+    color: black;
+  }
+  .lightingOption {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    border-top: 0.6px solid rgba(255, 255, 255, 0.3);
+    border-bottom: 0.6px solid rgba(255, 255, 255, 0.3);
+    font-size: 25px;
+    font-weight: 300;
+    font-family: "Lato", sans-serif;
+    color: white;
+    padding: 25px 30px;
+    transition: color var(--theme-change-time);
+  }
+  .lightsOutPopUpContainer.lightTheme .lightingOption {
+    border-top: 0.6px solid rgba(0, 0, 0, 0.3);
+    border-bottom: 0.6px solid rgba(0, 0, 0, 0.3);
+    color: black;
+  }
+  button.lightingOptionButton {
+    background: transparent;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border: 2px solid var(--primary-color);
+    overflow: hidden;
+  }
+  .animationCircle {
+    opacity: 0;
+    transform: scale(2);
+
+    transition: opacity 0.5s, transform 0.5s;
+  }
+  button.lightingOptionButton.selected .animationCircle {
+    opacity: 1;
+    transform: scale(1);
+    top: 0;
+    left: 0;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background: var(--primary-color);
+    /* transform: scale(2); */
+  }
+
+  /* Visible section of the website for the tweets */
+  .tweetsContainer {
+    background-color: transparent;
+    width: 100vw;
+    min-height: 100vh;
+    display: none;
+    padding: 50px 0 55px;
+  }
+  .tweet {
+    display: flex;
+    flex-direction: row;
+    justify-content: stretch;
+    flex-wrap: nowrap;
+    width: 100vw;
+    overflow: hidden;
+    background-color: transparent;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+    padding-bottom: 10px;
+    animation: show 0.35s ease-in 1;
+    padding-right: 10px;
+    transition: border-bottom var(--theme-change-time);
+    /* height: 300px; */
+  }
+  .tweet.tweet--notification {
+    display: grid;
+    column-gap: 15px;
+    width: 100vw;
+    grid-template-columns: 32px auto;
+    padding: 10px;
+    padding-left: 40px;
+    font-family: sans-serif;
+  }
+  .notificationSvgContainerSvg {
+    width: 100%;
+  }
+  .notificationTweetContent .userPictures img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+  }
+  .notificationsBody.lightTheme .notificationTweetMessage {
+    color: black;
+  }
+  .notificationTweetMessage {
+    color: white;
+    margin: 4px 0 0;
+    font-size: 17px;
+    transition: color var(--theme-change-time);
+  }
+  .notificationTweetMessage .contactName {
+    font-weight: 700;
+  }
+  .notificationSvgContainerSvg.contact {
+    fill: rgb(29, 155, 240);
+  }
+  .notificationTweetContent .notificationContent {
+    color: var(--dark-grey);
+    margin: 4px 0 0;
+  }
+  .notificationSvgContainerSvg.like {
+    fill: var(--twitter-like-color);
+  }
+  .notificationSvgContainerSvg.retweet {
+    fill: rgb(55 255 15);
+  }
+  .tweetsContainer.lightTheme .tweet {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+  }
+  .tweetUserImage {
+    display: flex;
+    align-items: start;
+    justify-content: center;
+
+    height: 100%;
+    background-color: transparent;
+    padding-top: 10px;
+    padding-left: 10px;
+    padding-right: 5px;
+  }
+  .tweet.tweet--reply .replySection {
+    margin: 0 0 5px;
+    line-height: 1.34;
+  }
+  .tweet.tweet--reply .replySection .reply {
+    color: var(--dark-grey);
+  }
+  .tweet.tweet--reply .replySection .usernames {
+    /* color:rgb(29 155 240); */
+    color: var(--primary-color);
+  }
+  .tweetUserImagePicture {
+    width: 65px;
+    height: 65px;
+    border-radius: 50%;
+    border: 0;
+  }
+  .tweetUserImagePicture img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+  }
+  .tweetContent {
+    width: 100%;
+    height: 100%;
+    background-color: transparent;
+    font-family: sans-serif;
+    max-width: calc(100% - 65px);
+  }
+  .tweetContent header .displayName {
+    color: white;
+    font-weight: 700;
+    transition: color var(--theme-change-time);
+  }
+  .tweetsContainer.lightTheme .displayName {
+    color: black;
+  }
+  .tweetContent header .userName {
+    color: var(--dark-grey);
+  }
+  .tweetContent header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding-top: 10px;
+    margin-bottom: 3px;
+  }
+  .headerText {
+    width: 25ch;
+    max-width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin: 0;
+    font-size: 18px;
+    color: var(--dark-grey);
+  }
+  .tweetOptions {
+    background: transparent;
+    width: 10px;
+    height: 10px;
+  }
+  .tweetContentText {
+    color: white;
+    font-size: 17px;
+    padding-right: 10px;
+    line-height: 1.2;
+    transition: color var(--theme-change-time);
+  }
+  .tweetsContainer.lightTheme .tweetContentText {
+    color: black;
+  }
+  button.tweetOptions {
+    border: 0;
+    /* display: flex; */
+    background-color: transparent;
+    width: 20px;
+    height: 20px;
+  }
+  button.tweetOptions .smallCircle {
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: var(--dark-grey);
+    margin-bottom: 2px;
+  }
+  .tweetInteractionSection {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+    right: 8px;
+    margin-top: 15px;
+  }
+  .tweetInteractionSectionIcon {
+    fill: var(--dark-grey);
+    width: 20px;
+    height: 20px;
+    margin-right: 3px;
+    transition: fill 0.3s;
+  }
+  .tweetInteractionSectionIcon.red {
+    fill: var(--twitter-like-color);
+  }
+  .section--retweet .tweetInteractionSectionIcon.clicked {
+    fill: rgb(55, 255, 15);
+  }
+  .section--retweet .retweetNo {
+    transition: color 0.3s;
+  }
+  .section--retweet .retweetNo.clicked {
+    color: rgb(55, 255, 15);
+  }
+  .section--like .likeNo {
+    /* transition: color 0.1s; */
+  }
+  .section--like .likeNo.clicked {
+    color: var(--twitter-like-color);
+  }
+  .tweetInteractionSection .section {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+  }
+  button.tweetInteractionSectionButton {
+    background: transparent;
+    border: 0;
+  }
+
+  .tweetInteractionSection .section div {
+    color: var(--dark-grey);
+    font-size: 13.5px;
+    position: relative;
+    bottom: 2px;
+  }
+  .tweetMediaImage {
+    margin-top: 15px;
+    width: calc(100% - 15px);
+    border-radius: 25px;
+    overflow: hidden;
+    /* display: none; */
+  }
+  .tweetMediaImage img {
+    width: 100%;
+    transform: scale(1.1);
+  }
+  .linkSection {
+    display: block;
+    margin-top: 15px;
+    width: calc(100% - 15px);
+    border-top-right-radius: 25px;
+    border-top-left-radius: 15px;
+    overflow: hidden;
+    text-decoration: none;
+  }
+  .linkImagePicture {
+    width: 100%;
+  }
+  .url {
+    color: var(--dark-grey);
+    margin-bottom: 5px;
+    width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .linkPreview {
+    color: white;
+    transition: color var(--theme-change-time);
+  }
+  .tweetsContainer.lightTheme .linkPreview {
+    color: black;
+  }
+  .linkText {
+    width: 100%;
+    padding: 10px;
+    border-left: 2px solid rgb(47 47 51);
+    border-right: 2px solid rgb(47 47 51);
+    border-bottom: 2px solid rgb(47 47 51);
+    border-top: 0;
+    border-bottom-right-radius: 15px;
+    border-bottom-left-radius: 15px;
+    position: relative;
+    bottom: 4px;
+  }
+  .tweetsContainer.lightTheme .linkText {
+    border-left: 2px solid rgb(186 186 199);
+    border-right: 2px solid rgb(186 186 199);
+    border-bottom: 2px solid rgb(186 186 199);
+  }
+
+  .quotedTweet {
+    padding: 10px;
+    border: 1px solid rgb(47 47 51);
+    width: calc(100%-25px);
+    border-radius: 15px;
+    margin-top: 15px;
+  }
+  .tweetsContainer.lightTheme .quotedTweet {
+    border: 1px solid rgb(186 186 199);
+  }
+  .quotedTweet .quotedTweetImageContainer {
+    display: inline-block;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin-right: 8px;
+  }
+  .quotedTweet .headerText {
+    width: 100%;
+    text-align: left;
+    display: inline-block;
+  }
+  .quotedTweet .quotedTweetImageContainer img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .quotedTweet header p {
+    display: inline-block;
+  }
+  .quotedTweet .quotedTweetText {
+    color: white;
+    transition: color var(--theme-change-time);
+  }
+  .tweetsContainer.lightTheme .quotedTweet .quotedTweetText {
+    color: black;
+  }
+  .quotedTweet header {
+    margin-bottom: 7px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: start;
+    padding-top: 0;
+  }
+  /* Navbar styles for the different screens */
+  .navTwitterImage.navTwitterImage--text {
+    display: none;
+    color: white;
+    font-size: 28px;
+    width: 100%;
+    text-align: center;
+    font-family: sans-serif;
+    transition: color var(--theme-change-time);
+  }
+  .navTwitterImage.navTwitterImage--search {
+    display: none;
+    width: 65vw;
+    border: 0;
+    height: 40px;
+    border-radius: 20px;
+    /* margin-bottom: 5px; */
+    padding: 5px 10px;
+    font-size: 17px;
+    color: #757575;
+    background-color: rgba(200, 200, 200, 0.2);
+  }
+  .navTwitterImage.navTwitterImage--search:focus {
+    outline: 0;
+  }
+  /* Styles for the trending Searches Container on the Search screen */
+  .trendingSearchesContainer {
+    display: none;
+    width: 100%;
+    padding: 50px 0 55px;
+    overflow: hidden;
+  }
+  .mostTrendingSearch {
+    width: 100%;
+    overflow: hidden;
+    height: 225px;
+    position: relative;
+    animation: show 0.3s ease-in 1;
+  }
+  .mostTrendingSearch img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .mostTrendingSearchOverlay {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-image: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.9));
+    padding: 12px 12px;
+  }
+  .trendingSearchesText {
+    margin-top: 123px;
+  }
+  .trendingSearchesTopic,
+  .trendingSearchesHashTag,
+  .trendingWith {
+    color: white;
+    font-family: "Open Sans", sans-serif;
+    margin: 2px 8px;
+  }
+  .trendingSearchesTopic {
+    font-weight: 600;
+  }
+  .trendingSearchesTopic .now {
+    font-weight: 200;
+    font-size: 18px;
+  }
+  .trendingWith {
+    /* font-family: 'Lato', sans-serif; */
+    font-weight: 500;
+    word-spacing: 5px;
+  }
+  .trendingSearchesHashTag {
+    font-size: 22px;
+    font-weight: 900;
+  }
+  .trendingSearchesContainer.lightTheme .trend {
+    background-color: white;
+  }
+  .trendingSearchesContainer.lightTheme .trendHeader,
+  .trendingSearchesContainer.lightTheme .trendBody {
+    color: black;
+  }
+  .trendingSectionTitle {
+    width: 100vw;
+    font-family: "Open Sans", sans-serif;
+    font-size: 20px;
+    color: white;
+    transition: color var(--theme-change-time);
+    padding-left: 15px;
+    font-weight: 700;
+    animation: show 0.3s ease-in;
+    margin: 10px 0;
+  }
+  .trendingSearchesContainer.lightTheme .trendingSectionTitle {
+    color: black;
+  }
+  /* Styles for the Trend Section */
+  .trend.trendWithPic {
+    display: grid;
+    grid-template-columns: auto 100px;
+    padding: 10px;
+    background: black;
+    column-gap: 20px;
+    animation: show 0.3s ease-in;
+  }
+  .trendImageSection img {
+    width: 100%;
+    height: 100%;
+    border-radius: 15px;
+    object-fit: cover;
+    height: 100px;
+  }
+  .smallImage {
+    display: inline-block;
+    margin-top: 2px;
+  }
+  .smallImage img {
+    width: 16px;
+    height: 16px;
+    object-fit: cover;
+    border-radius: 100%;
+  }
+  .trendHeader {
+    margin: 0;
+    color: white;
+    font-family: "Open Sans", sans-serif;
+  }
+  .accountName {
+    font-weight: 600;
+  }
+  .trendBody {
+    color: white;
+    margin: 0;
+    font-weight: 800;
+    font-size: 16px;
+    font-family: "Open Sans", sans-serif;
+  }
+  .trendHeader .date {
+    color: var(--dark-grey);
+  }
+  /* Styles for the messages container in the Message Screen */
+  .messagesContainer {
+    display: none;
+    width: 100%;
+    padding-top: 50px;
+  }
+  .messagesContainer .chat {
+    display: grid;
+    grid-template-columns: 68px auto;
+    padding: 10px;
+    /* border-bottom: 1px solid rgb(0, 0, 0, 0.3); */
+    border: 0;
+    animation: show 0.3s ease-in;
+  }
+
+  .messagesContainer .displayPicture {
+    width: 58px;
+    height: 58px;
+    border: 0;
+    border-radius: 50%;
+    overflow: hidden;
+    /* margin-right: 15px; */
+  }
+  .messagesContainer .displayPicture img {
+    width: 100%;
+    height: 100%;
+  }
+  .messagesContainer .chatText * {
+    margin: 0;
+  }
+  .messagesContainer .chatText .lastText {
+    margin-top: 2px;
+    /* width: 34ch; */
+    /* white-space: nowrap; */
+    /* overflow: hidden; */
+    /* text-overflow: ellipsis; */
+    font-size: 14px;
+    color: var(--dark-grey);
+  }
+  .messagesContainer .displayName {
+    font-weight: 900;
+    font-family: "Open Sans", sans-serif;
+    color: white;
+  }
+  .messagesContainer.lightTheme .displayName {
+    color: black;
+    transition: var(--theme-change-time);
+  }
+  .messagesContainer .displayName .username {
+    color: var(--dark-grey);
+    font-weight: 500;
+  }
+  /* Styles for the notifications container */
+  .notificationsContainer {
+    display: none;
+    width: 100vw;
+    padding-top: 50px;
+    padding-bottom: 55px;
+    overflow: hidden;
+  }
+  .notificationsNav {
+    width: 100vw;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+  }
+  .notificationsNavButton {
+    width: 49vw;
+    padding: 15px 0 10px;
+    font-size: 20px;
+    color: var(--dark-grey);
+    background: transparent;
+    margin: 0;
+    border: 0;
+    display: inline-block;
+    text-align: center;
+    transition: color 0.2s;
+  }
+  .notificationsNavButton:focus {
+    outline: 0;
+  }
+  .notificationsNavButton.selected {
+    color: var(--primary-color);
+  }
+  /* Styles for the slider */
+  .sliderContainer {
+    display: block;
+    width: 100vw;
+    height: 4px;
+  }
+  .sliderContainer .slider {
+    width: 50%;
+    height: 100%;
+    background-color: var(--primary-color);
+    transition: transform 0.3s ease-in-out;
+    /* transform: translateX(100%); */
+  }
+  /* styling the body of the notifications Container */
+  .notificationsBody {
+    width: 200vw;
+    /* overflow: hidden; */
+    display: grid;
+    grid-template-columns: 100vw 100vw;
+    transition: transform 0.3s ease-in-out;
+  }
+  .notificationsBody.toggled {
+    transform: translateX(-50%);
+  }
+  .notificationsBody.lightTheme section.tweetContentText,
+  .notificationsBody.lightTheme .displayName {
+    color: black;
+  }
+  .allBody,
+  .mentionsBody {
+    width: 100vw;
+  }
+  .allBody {
+    background-color: transparent;
+  }
+  .mentionsBody {
+    background-color: transparent;
+  }
+  .notificationsBody.lightTheme .tweet {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+  }
+  /* Adding styles for the new input tweet container */
+  .newTweetInputContainer,
+  .closeNewTweetInputContainer {
+    position: fixed;
+    display: none;
+  }
+  .closeNewTweetInputContainer {
+    /* width: 100vw;
+    height: 100vh; */
+    background-color: black;
+    opacity: 0;
+    transition: opacity 0.5s;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+  }
+  .closeNewTweetInputContainer.visible {
+    opacity: 0.85;
+  }
+  .newTweetInputContainer {
+    left: 5vw;
+    right: 5vw;
+    top: 15vh;
+    bottom: 15vh;
+    border-radius: 10px;
+    opacity: 1;
+    /* background-color: #151414; */
+    background-color: black;
+    transition: transform 0.5s;
+    transform: translateY(85vh);
+    z-index: 5;
+  }
+  .newTweetInputContainer.visible {
+    transform: translateY(0);
+    opacity: 1; /*Change the animation to amake the container slide up from the bottom instead of changing the opacity*/
+  }
+  /* User Section */
+  .userSection {
+    display: flex;
+    height: 80px;
+    padding: 10px;
+    justify-content: space-between;
+    width: 100%;
+  }
+  .userSectionWrapper {
+    display: flex;
+  }
+  .userSectionDisplayImage {
+    width: 50px;
+    height: 50px;
+    border-radius: 15px;
+    overflow: hidden;
+    margin-right: 10px;
+    margin-top: 5px;
+  }
+  .userSectionDisplayText h2 {
+    margin: 0;
+  }
+  .userSectionDisplayText h2:nth-of-type(2) {
+    margin: 0;
+    margin-top: 2px;
+  }
+
+  .userSectionDisplayImage img {
+    width: 100%;
+    height: 100%;
+  }
+  .followButtonSection {
+    display: flex;
+    justify-content: center;
+    height: 100%;
+    align-items: center;
+  }
+  .followButton {
+    border: 0;
+    background-color: var(--primary-color);
+    padding: 10px;
+    border-radius: 8px;
+    color: white;
+    font-weight: 600;
+    font-family: "Open Sans", sans-serif;
+    text-decoration: none;
+  }
+  .tweetInput {
+    width: 92%;
+    margin: 0 4%;
+    height: 44vh;
+    border-radius: 15px;
+    outline: none;
+    border: 0;
+    background-color: #151414;
+    color: white;
+    text-align: center;
+    display: block;
+    font-size: 17px;
+  }
+  .tweetInputSubmitButton {
+    margin: 0 4%;
+    width: 92%;
+    border-radius: 7.5px;
+    margin-top: 10px;
+    font-size: 15px;
+    padding: 2vh 0;
+    border: 0;
+    outline: 0;
+    background-color: var(--primary-color);
+    color: white;
+    font-weight: 600;
+    font-family: "Open Sans", sans-serif;
+  }
+  /* Follow me section */
+  .followMeSection {
+    width: 100vw;
+    display: none;
+    position: fixed;
+    height: 45vh;
+    z-index: 5;
+    background-color: rgba(8, 8, 8);
+    bottom: 0;
+    transform: translateY(45vh);
+    transition: transform 0.35s;
+    border-top-left-radius: 25px;
+    border-top-right-radius: 25px;
+  }
+  .followMeSection .followMeSVG {
+    width: 27vw;
+    display: block;
+    margin: 40px auto;
+  }
+  .followMeSection.visible {
+    transform: translateY(0);
+  }
+  .followMeSection::after {
+    position: absolute;
+    content: "";
+    display: block;
+    width: 45px;
+    height: 8px;
+    background: rgba(123, 123, 123, 0.3);
+    border-radius: 5px;
+    top: 10px;
+    left: calc(50% - 22.5px);
+  }
+  .followMeButtonContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .followMeSection .followMeButton {
+    display: block;
+    text-align: center;
+    background-color: var(--primary-color);
+    padding: 12px;
+    border: 0;
+    border-radius: 10px;
+    margin-left: auto;
+    margin-right: auto;
+    font-family: "Open Sans", sans-serif;
+    font-size: 20px;
+    max-width: 275px;
+    font-weight: 700;
+    text-decoration: none;
+    color: rgba(8, 8, 8);
+  }
+  .followMeSection.lightTheme {
+    background-color: white;
+  }
+  .followMeSection .followMeButton {
+    color: white;
+  }
+  .closeFollowMeSection {
+    position: fixed;
+    display: none;
+    background-color: black;
+    opacity: 0;
+    transition: opacity 0.5s;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+  }
+
+  .closeFollowMeSection.visible {
+    opacity: 0.85;
+  }
+
+  /* Styles for the css Loader Container */
+  .cssLoaderContainer {
+    width: 100vw;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .cssLoader {
+    display: flex;
+  }
+  .cssLoader .circle {
+    width: 11px;
+    background-color: var(--primary-color);
+    height: 11px;
+    border-radius: 50%;
+    margin: 4px;
+    animation: bounce 0.5s infinite ease-in;
+    opacity: 0;
+    transition: opacity 0.6s;
+  }
+  .cssLoader .circle:nth-of-type(2) {
+    animation-delay: 0.1s;
+  }
+  .cssLoader .circle:nth-of-type(3) {
+    animation-delay: 0.2s;
+  }
+  .cssLoader.visible .circle {
+    opacity: 1;
+  }
+}
+@media screen and (min-width: 375px) and (max-width: 400px) {
+  .quotedTweet .headerText {
+    width: 21ch;
+  }
+  .tweetInput {
+    height: 47vh;
+  }
+}
+@media screen and (min-width: 400px) and (max-width: 420px) {
+  .quotedTweet .headerText {
+    width: 25ch;
+  }
+}
+@media screen and (max-width: 321px) {
+  .tweetContent {
+    padding-right: 10px;
+  }
+}
+/* Defining a media query to reduce the space between list items in the Account Info Section */
+@media screen and (max-height: 600px) {
+  .listItem {
+    padding: 15px 15px 15px 20px;
+  }
+}
+@media screen and (max-width: 330px) {
+  .accountInfo {
+    left: -80vw;
+    width: 80vw;
+  }
+  .closeAccountInfo {
+    width: 20vw;
+    right: -20vw;
+  }
+}
+
+@media screen and (min-width: 700px) {
+  body {
+    background: black;
+  }
+  /* To remove all other items from the message screen */
+  .topNavBar,
+  .bottomNavBar,
+  .tweetButton,
+  .accountInfo,
+  .tweetsContainer,
+  .tweetUserImagePicture,
+  .tweetMediaImage,
+  .closeFollowMeSection,
+  .trendingSearchesContainer,
+  .followMeSection,
+  .messagesContainer,
+  .closeNewTweetInputContainer,
+  .newTweetInputContainer,
+  .tweetsContainer,
+  .notificationsContainer {
+    display: none;
+  }
+
+  .loaderAnimationContainerBigScreens {
+    position: absolute;
+    background: black;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    display: flex;
+    color: var(--primary-color);
+    font-size: 8px;
+    align-items: center;
+    justify-content: center;
+    animation: show 0.8s ease-in 1;
+    transition: opacity 0.8s;
+  }
+  .loaderAnimationContainer {
+    display: none;
+  }
+}
+
+/* Media Query for the bigger screens (To display change to smaller device message) */
+@media screen and (min-width: 700px) {
+  .loaderAnimationContainerBigScreens {
+    flex-direction: column;
+  }
+
+  .loaderAnimationContainerBigScreens .textContainer h1 {
+    font-size: 45px;
+    text-align: center;
+    width: 100%;
+  }
+  .loaderAnimationContainerBigScreens .textContainer {
+    margin: 30px 40px;
+  }
+}
+
+@media screen and (min-width: 700px) {
+  body {
+    font-family: "Open Sans", sans-serif;
+    overflow: hidden;
+  }
+  /* .loaderAnimationContainerBigScreens {
+    flex-direction: row;
+  } */
+  .loaderAnimationContainerBigScreens .bigScreenImage {
+    height: 50vh;
+    margin-left: 30px;
+    max-height: 1000px;
+  }
+  .loaderAnimationContainerBigScreens .textContainer h2 {
+    font-size: 23px;
+    max-width: 650px;
+    margin-top: 0;
+    text-align: center;
+    margin-bottom: 0;
+  }
+  .loaderAnimationContainerBigScreens .textContainer h1 {
+    display: block;
+    font-size: 30px;
+    margin-bottom: 20px;
+    margin-bottom: 0;
+  }
+  .loaderAnimationContainerBigScreens .textContainer h3 {
+    text-align: center;
+    margin-top: 0px;
+    font-size: 18px;
+  }
+
+  /* TODO: Use height instead of width since height is what will be more relevant */
+  .contentContainer {
+    text-align: center;
+  }
+}
+
+/* Flicker animation that will be displayed when the page loads */
+@keyframes flicker {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+}
+/* Animation to show the message for big screens smoothly */
+@keyframes show {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+/* Animation for the css Loader at the bottom of the tweets Container */
+@keyframes bounce {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
