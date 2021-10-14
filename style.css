@@ -1122,6 +1122,7 @@
   }
   .newTweetInputContainer.visible {
     transform: translateY(0);
+    min-height: 350px;
     opacity: 1; /*Change the animation to amake the container slide up from the bottom instead of changing the opacity*/
   }
   /* User Section */
